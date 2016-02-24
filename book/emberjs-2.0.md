@@ -21,7 +21,7 @@ emberjs 将逐渐移除 controller，view 这些传统 MVC 中的概念，
 
 **router**
 
-router 负责组织router，并处理 route 之间的层级关系
+router 负责组织route，并处理 route 之间的层级关系
 
 **route**
 
@@ -30,8 +30,7 @@ router 负责组织router，并处理 route 之间的层级关系
 **model**
 
 在 emberjs 的官方中，model 层是由 ember-data 负责的，
-其实 emberjs 的 model 可以是任意的 emberjs 对象，数组或 promise。由于 ember-data 的复杂性以及对数据的强制规范，
-wecatch 在实践中都是自己实现 ORM 层，处理简单，数据交互也直观。
+其实 emberjs 的 model 可以是任意的 emberjs 对象，数组或 promise。由于 ember-data 的复杂性以及对数据的强制规范，wecatch 在实践中都是自己实现 ORM 层，处理简单，数据交互也直观。
 
 **service**
 
