@@ -20,12 +20,11 @@
 
 ```
 
-秉承`约定优于配置`的设计理念，ember app 的目录结构，文件命名，变量名由
-官方做了统一规范。
+秉承`约定优于配置`的设计理念，ember app 的目录结构，文件命名，变量名由官方做了统一规范。
 
 ## Component
 
-`Component` 是具有独立逻辑，属性和UI的一个相对独立的逻辑单元。`Component`
+`Component` 是具有独立逻辑、属性、UI的一个相对独立的单元。`Component`
 最大的特点就是复用性强，极强的提高了前端的生产效率。
 
 ## Controller
@@ -72,8 +71,7 @@ Example uses of services include:
 - Server-backed API calls that may not fit Ember Data
 
 
-service 是一个单实例对象，能够以依赖注入的方式，在 ember app 的任意对象中
-引用，借助 service 可以完成诸如登陆，认证，全局通知等
+service 是一个单实例对象，能够以依赖注入的方式，在 ember app 的任意对象中引用，借助 service 可以完成诸如登陆，认证，全局通知等。
 
 
 ## Mixin
