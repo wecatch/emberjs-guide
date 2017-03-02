@@ -14,6 +14,14 @@ Router.map(function() {
       this.route('slow-model-no-custome');
     });
   });
+  this.route('error-lab', function() {
+    this.route('bar', function() {
+      this.route('error-model');
+      this.route('error-model-no-custome');
+    });
+    this.route('bar-error');
+  });
+  this.route('page-not-found', {path: '/*wildcard'});
 });
 
 export default Router;
