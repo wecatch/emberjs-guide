@@ -22,6 +22,10 @@ Router.map(function() {
     this.route('bar-error');
   });
   this.route('page-not-found', {path: '/*wildcard'});
+  this.route('component-lab', function() {
+    this.route('first-component');
+    this.route('second-component');
+  });
 });
 
 export default Router;

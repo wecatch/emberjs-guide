@@ -58,7 +58,7 @@ ember 默认会阻止 dom 在浏览器的默认行为，使用 preventDefault=fa
 
 If a value option for the {{action}} helper is specified, its value will be considered a property path that will be read off of the first parameter of the action. This comes very handy with event listeners and enables to work with one-way bindings.
 
-如果在 action helper 中指定一个 value，这个 value 将会当成 action 的第一个参数传入
+如果在 action helper 中指定一个 value，这个 value 将会当成 action 的第一个参数传入，使用内敛的方式调用
 
 
 ```
@@ -68,7 +68,7 @@ If a value option for the {{action}} helper is specified, its value will be cons
 
 By default, the action handler receives the first parameter of the event listener, the event object the browser passes to the handler, so bandDidChange prints Event {}.
 
-默认情况下，action 第一个参数是 event 如果不指定 value 值。
+默认情况下，内敛 action 第一个参数是 event 如果不指定 value 值。
 
 ## 获取原始的浏览器 event
 
