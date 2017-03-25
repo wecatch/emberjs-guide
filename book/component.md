@@ -66,7 +66,7 @@ installing component-test
 - component.rerender() is called
 - a property on a model or service used by the template has changed (including through computed properties).
 
-> 注意：任何外部 attribute 者内部的 property 发生了改变，包括 model 中的属性，service 中的属性， 且这些 property 在 component 的模板中被使用，都会触发 component 重新渲染
+> 注意：任何外部 attribute 或者内部的 property 发生了改变，包括 model 中的属性，service 中的属性， 且这些 property 在 component 的模板中被使用，都会触发 component 重新渲染
 
 Component 第一次初始化要历经：
 
