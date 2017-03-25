@@ -178,7 +178,7 @@ The didRender hook is called during both render and re-render after the template
 ### 各个 hook 使用注意事项
 
 
-- didUpdateAttrs 和 didReceiveAttrs 是在外部传递给 component 的属性发生改变时导致 re-render 重新执行才会调用，如果是组件内部发生的导致属性改变而re-render，这两个 hooks 都不会执行。
+- didUpdateAttrs 和 didReceiveAttrs 是在外部传递给 component 的属性发生改变时导致 re-render 重新执行才会调用，如果是组件内部发生的导致属性改变而re-render，这两个 hooks 都不会执行，有一点需要注意，虽然这两个 hooks 可以当做 oberver 来使用，但对应的属性最好都是 object 才会在属性发生改变时调用 hooks，详见 [ember-cli-simditor](https://github.com/wecatch/ember-cli-simditor/blob/master/addon/components/simditor-editor.js) component 的实现。
 - component 内部属性发生改变，会导致 willUpdate、willRender、didUpdate、didRender 执行
 - 不要在 {will,did}{Render,Update} 更改 component 的内部或外部属性，这样会导致性能问题或无限的更新循环
 
