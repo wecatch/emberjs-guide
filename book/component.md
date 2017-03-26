@@ -51,6 +51,101 @@ installing component-test
 
 当不知道 Component name 名字时，可以动态渲染 Component，其穿参、事件绑定等处理和普通是一样的。
 
+## 向 component 传递参数
+
+component 传递参数非常简单，按照参数名字赋值就可以
+
+```handlebars
+{{blog-post title=post.title body=post.body}}
+```
+
+It is important to note that these properties stay in sync (technically known as being "bound"). That is, if the value of `componentProperty` changes in the component, `outeroperty` will be updated to reflect that change. The reverse is true as well.
+
+需要注意的是，以这种方式传递的参数其值在组件外和组件内部是同步的，术语叫 bound，也就是说如果组件内部的值发生改变，组件外部的值也会更新，组件外部的值发生改变，内部的值也会发生改变
+
+**使用占位参数**
+
+```javascript
+import Ember from 'ember';
+
+const BlogPostComponent = Ember.Component.extend({});
+
+BlogPostComponent.reopenClass({
+  positionalParams: ['title', 'body']
+});
+
+export default BlogPostComponent;
+```
+
+占位参数必须是在 component class 声明的属性，而且运行时不可以改变，代码中使用 reopenClass 把占位参数声明为component 的静态变量。
+
+```handlebars
+  {{blog-post post.title post.body}}
+```
+
+可以像下面这样，声明占位参数为一个数组，此时，`positionalParams` 值为 `params`
+
+```JavaScript
+import Ember from 'ember';
+
+const BlogPostComponent = Ember.Component.extend({
+  title: Ember.computed('params.[]', function(){
+    return this.get('params')[0];
+  }),
+  body: Ember.computed('params.[]', function(){
+    return this.get('params')[1];
+  })
+});
+
+BlogPostComponent.reopenClass({
+  positionalParams: 'params'
+});
+
+export default BlogPostComponent;
+```
+
+## 自定义 component 模板渲染的内容
+
+传递参数向 component 可以提供 component 模板渲染的所需要的内容，如果想自定义 component 的模板，可以使用 `block form`，在模板中使用 `{{yield}}` 表达式可以起到这个作用。 
+
+组件 `blog-post`
+
+```html
+# app/templates/components/blog-post.hbs
+<h1>{{title}}</h1>f
+<div class="body">{{yield}}</div>
+
+# app/templates/index.hbs
+{{#blog-post title=title}}
+  <p class="author">by {{author}}</p>
+  {{body}}
+{{/blog-post}}
+
+```
+
+其中模板内部的部分`  <p class="author">by {{author}}</p>  {{body}}` 将会替代 yield 出现的地方。
+
+**组件的内部内容和组件外部进行通信**
+
+hbs 提供了两个非常有用的 helper `component ` 和 `hash `，借助 component 可以动态渲染组件内容，借助 hash 可以把组件内部的内容传递到组件外部供组件外部使用。
+
+```handlebars
+# app/templates/components/blog-post.hbs
+<h2>{{title}}</h2>
+<div class="body">{{yield (hash body=(component editStyle postData=postData))}}</div>
+
+```
+
+此种场景之下，blog-post 根据组件外部传来的 editStyle 选择对应的组件进行渲染，然后通过 hash 的方式传递组件内部的值到外部，外部可以通过 as 的方式拿到组件内部的值
+
+```handlebars
+{{#blog-post editStyle="markdown-style" postData=myText as |post|}}
+  <p class="author">by {{author}}</p>
+  {{post.body}}
+{{/blog-post}}
+```
+
+`as |post|` 对应的是组件内部的 （hash body=(component editStyle postData=postData))，
 
 ## Component 的生命周期  
 
@@ -136,7 +231,6 @@ export default Ember.Component.extend({
     }
   }
 });
-
 ```
 
 ### **didReceiveAttrs**
@@ -163,6 +257,9 @@ After a component successfully renders its backing HTML element into the DOM, it
 - Setting properties on the component in didInsertElement() triggers a re-render, and for performance reasons, is not allowed.
 - While didInsertElement() is technically an event that can be listened for using on(), it is encouraged to override the default method itself, particularly when order of execution is important.
 
+
+
+
 - 只在初始化渲染调用
 - 子组件的 didInsertElement 调用总是比父组件早
 - 在 didInsertElement 中改变 Component 属性能够触发重新 re-render，所以不要这么做。
@@ -184,4 +281,87 @@ The didRender hook is called during both render and re-render after the template
 - component 内部属性发生改变，会导致 willUpdate、willRender、didUpdate、didRender 执行
 - 不要在 {will,did}{Render,Update} 更改 component 的内部或外部属性，这样会导致性能问题或无限的更新循环
 
+## 自定义 component 的 html 元素和属性
+
+component 默认是使用 `div` 进行包裹，ember 提供了不同方法来修改 component 的 html 标签、html attribute、html class
+
+
+### 自定义 component html Element
+
+```javascript
+import Ember from 'ember';
+
+export default Ember.Component.extend({
+  tagName: 'nav'
+});
+```
+
+component 的 `tagName` 属性可以修改 component 的包裹元素
+
+
+### 自定义 component html Element attribute 
+
+component 有不同的属性来分别自定义元素属性和元素 class: `attributeBindings`、`classNameBindings` 和 `classNames`。
+
+
+```javascript
+import Ember from 'ember';
+
+export default Ember.Component.extend({
+  classNames: ['primary'],
+  classNameBindings: ['myclass'],
+  attributeBindings: ['href'],
+  href: 'http://emberjs.com',
+});
+```
+
+借助 JavaScript 的可计算能力，这些属性都可以动态进行计算和添加。
+
+**普通 classs**
+
+`classNames` 属性是一个 class 字符串组成的数组，用来自定义 component 上的 class
+
+**动态绑定 class**
+
+`classNameBindings` 属性可以动态计算 component 的 class
+
+```javascript
+import Ember from 'ember';
+
+export default Ember.Component.extend({
+  classNameBindings:['isUrgent','isActive:active','isEnabled:enabled:disabled','priority'],
+  isUrgent: true,
+  isActive: true,
+  isEnabled: false,
+  priority: 'highestPriority',
+});
+```
+
+计算规则如下：
+
+1. 默认 isUrgent 驼峰风格的值为 ture 时，class 为 is-urgent，false 时无 class
+2. 自定义 class 名字，可以写成像 isActive:active，值为 ture 时，class 为 active，false 时无 class
+3. 属性值为字符串，class 为属性的值
+
+上面的组件渲染以后如下
+
+```html
+<div class="ember-view is-urgent active disabled highestPriority">
+```
+
+**动态绑定 attribute**
+
+```javascript
+import Ember from 'ember';
+
+export default Ember.Component.extend({
+  tagName: 'a',
+  title: null,
+  customeAlt: 'link'
+  attributeBindings: ['href','title', 'customeAlt:alt'],
+  href: 'http://emberjs.com'
+});
+```
+
+可以在 `attributeBindings` 中指定绑定的属性，当属性为空时不渲染，否则渲染对应的属性值，也可以自定义属性对应的名字如 `customeAlt:alt`
 

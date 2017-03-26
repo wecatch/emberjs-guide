@@ -9,3 +9,4 @@
 * [loading he error](book/route-loading-error.md)
 * [404 的实现](book/404.md)
 * [组件](book/component.md)
+* [路由](book/route.md)
