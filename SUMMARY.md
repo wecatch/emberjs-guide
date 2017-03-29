@@ -11,4 +11,5 @@
 * [component](book/component/index.md)
     * [自定义 component](book/component/custome-component.md)
     * [component 的生命周期](book/component/component.md)
+    * [component 的事件处理](book/component/action.md)
 * [action](book/action.md)

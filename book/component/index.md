@@ -104,3 +104,17 @@ BlogPostComponent.reopenClass({
 export default BlogPostComponent;
 ```
 
+## 向 component 传递 action
+
+
+除了可以向 component 传递普通的值参以外，还可以传递 action，即事件处理函数或普通的响应函数
+
+
+```handlebars
+{{blog-post action=(action "pusblishPost")}}
+```
+
+`publishPost` 是父容器(route、controller、或者 parent component) `actions` property 中定义的一个 action，通过 `action` helper 传递到 `blog-post` 中
+
+
+子组件中如何调用？可以像调用普通函数一样调用 `this.get('action')(post.id)`

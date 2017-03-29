@@ -18,9 +18,9 @@
 
 其中模板内部的部分` <p class="author">by {{author}}</p>  {{body}}` 将会替代 yield 出现的地方。
 
-## 返回 component 内部的值
+## 返回 component 内部的内容
 
-使用 yield 可以把组件内部的内容传递到组件外部供组件外部使用。
+使用 yield 可以把组件内部的内容传递到组件外部供外部使用。
 
 ```handlebars
 # app/templates/components/blog-post.hbs
@@ -29,7 +29,8 @@
 
 ```
 
-此种场景之下，blog-post 根据组件外部传来的 editStyle 动态选择对应的组件进行渲染，然后通过 hash 的方式 wrap 组件内部的值，并且通过 yield 的方式返回到外部，外部可以通过 as 的方式拿到组件内部的值
+此种场景之下，blog-post 根据组件外部传来的 editStyle 动态选择对应的组件进行渲染，然后通过 hash 的方式 wrap 组件内部的值，并且通过 yield 返回到外部，外部可以通过 as 的方式拿到组件内部的返回的值
+
 
 ```handlebars
 {{#blog-post editStyle="markdown-style" postData=myText as |post|}}
@@ -38,15 +39,19 @@
 {{/blog-post}}
 ```
 
-`as |post|` 对应的是组件内部的 （hash body=(component editStyle postData=postData))，
+`as |post|` 对应的是组件内部的 `（hash body=(component editStyle postData=postData))`，
 
 
-自定义 component 内容时，我们提到了 `block form`，使用 `yield` 表达式可以返回 component 内部的值供外部使用
+### yield 获取值得顺序
+
+通过 yield 在组件外部可以获取组件内部 yield 的值时，值得获取是按照 yield 的顺序组成的。
+
 
 ```handlebars
 # app/templates/components/blog-post.hbs
 {{yield post.title post.body post.author}}
 ```
+
 
 ```handlebars
 # app/templates/index.hbs
@@ -57,9 +62,7 @@
 {{/blog-post}}
 ```
 
-通过 yield 在组件外部可以获取组件内部 yield 的值，值得获取是按照 yield 的顺序组成的。
-
-如果在某些场合 component 不需要 yield，可以使用 `hasBlock` 判断当前组件的使用是否是利用 yield
+如果在某些场合 component 不需要 yield，可以使用 `hasBlock` 判断当前组件的使用是否是以 `block form` 的使用
 
 ```
 app/templates/components/blog-post.hbs
@@ -77,7 +80,8 @@ app/templates/components/blog-post.hbs
 
 # 自定义 component 的 html 元素和属性
 
-component 默认是使用 `div` 进行包裹，ember 提供了不同方法来修改 component 的 html 标签、html attribute、html class
+
+component 默认是使用 `div` 进行包裹，ember 提供了不同方法来修改 component 的 html tag name、html attribute、html class
 
 
 ### 自定义 component html Element
@@ -94,6 +98,7 @@ component 的 `tagName` 属性可以修改 component 的包裹元素
 
 
 ### 自定义 component html Element attribute 
+
 
 component 有不同的属性来分别自定义元素属性和元素 class: `attributeBindings`、`classNameBindings` 和 `classNames`。
 
@@ -158,5 +163,3 @@ export default Ember.Component.extend({
 ```
 
 可以在 `attributeBindings` 中指定绑定的属性，当属性为空时不渲染，否则渲染对应的属性值，也可以自定义属性对应的名字如 `customeAlt:alt`
-
-

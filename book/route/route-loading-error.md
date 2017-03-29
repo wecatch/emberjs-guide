@@ -1,4 +1,4 @@
-# ember route 的 loading 和 error 处理
+# route 的 loading 和 error 
 
 ember 通过模式匹配进行错误和 loading 处理，在 route 中的 beforeModel, model, and afterModel hooks 提供进行 promise 解析前、中、后的处理。
 
@@ -6,7 +6,7 @@ ember 通过模式匹配进行错误和 loading 处理，在 route 中的 before
 
 Simply define a template called loading (and optionally a corresponding route) that Ember will transition to. The intermediate transition into the loading substate happens immediately (synchronously), the URL won't be updated, and, unlike other transitions, the currently active transition won't be aborted.
 
-当 route 从 A --> B 跳转，ember 会在真正进入 B route 之前，也就是 B 的 model hooks 的 promise 未解析完成之前，进入一个 loading route，显示 loading 的状态，不过不同于其他 route ，loading route 并不会改变当前的 url，B 的 promise 解析完成之后，ember 才会真正改变当前 url，退出 loading route 进入 B。
+当 route 从 A --> B 跳转，ember 会在真正进入 B route 之前，也就是 B 的 model hooks 的 promise 未解析完成之前，进入一个 loading route，显示 loading 的状态，不过不同于其他 route ，loading route 并不会改变当前的 url，B 的 promise 解析完成之后，才会真正改变当前 url，退出 loading route 进入 B。
 
 ember 寻找 loading route 对应的模板规则是，routeName-loading 或者 loading
 
@@ -97,6 +97,3 @@ export default Ember.Route.extend({
   }
 });
 ```
-
-
-

@@ -1,6 +1,7 @@
 # Component 的生命周期  
 
-### 基础概念
+
+## 基础概念
 
 - attrs ，通过外部传递给 component 称之为  attrs
 - property，内部的属性称之为 property
@@ -35,11 +36,11 @@ willDestroyElement-->willClearRender-->didDestroyElement
 
 每个生命周期的 hooks 都有相应的职能，所以调用它们要选在恰当的时候。
 
-### **init**
+## **init**
 
 初始化组件，在此 hooks 可以完成对相应属性的最基本的声明和初始化工作
 
-### **didUpdateAttrs**
+## **didUpdateAttrs**
 
 didUpdateAttrs runs when the attributes of a component have changed, but not when the component is re-rendered, via component.rerender, component.set, or changes in models or services used by the template.
 
@@ -84,13 +85,13 @@ export default Ember.Component.extend({
 });
 ```
 
-### **didReceiveAttrs**
+## **didReceiveAttrs**
 
 didReceiveAttrs runs after init, and it also runs on subsequent re-renders, which is useful for logic that is the same on all renders. It does not run when the re-render has been initiated internally.
 
 didReceiveAttrs 在 init 之后执行，也会在 re-render 时在 didUpateAttrs 之后执行，因此这个 hooks 可以用在初次渲染和再次渲染时处理相同的业务逻辑，同 didUpdateAttrs 一样，可以当成一个 observer。如果 re-render 是由 Component 内部触发引起的，此 hooks 并不会执行。
 
-### **didInsertElement**
+## **didInsertElement**
 
 After a component successfully renders its backing HTML element into the DOM, it will trigger its didInsertElement() hook.
 
@@ -117,7 +118,7 @@ After a component successfully renders its backing HTML element into the DOM, it
 - 即使可以使用 on 来监听 didInsertElement 方法，但是避免这样做，为了保证所有的 hook 可以正确按照顺序调用
 
 
-### **didRender**
+## **didRender**
 
 The didRender hook is called during both render and re-render after the template has rendered and the DOM updated. You can leverage this hook to perform post-processing on the DOM of a component after its been updated.
 
@@ -125,7 +126,7 @@ The didRender hook is called during both render and re-render after the template
 当 dom 都准备后了之后，didRender 被执行，可以在 didRender 中执行 dom 完成之后的更新，比如计算 dom 容器的高度等等。
 
 
-### 各个 hook 使用注意事项
+## 各个 hook 使用注意事项
 
 
 - didUpdateAttrs 和 didReceiveAttrs 是在外部传递给 component 的属性发生改变时导致 re-render 重新执行才会调用，如果是组件内部发生的导致属性改变而re-render，这两个 hooks 都不会执行，有一点需要注意，虽然这两个 hooks 可以当做 oberver 来使用，但对应的属性最好都是 object 才会在属性发生改变时调用 hooks，详见 [ember-cli-simditor](https://github.com/wecatch/ember-cli-simditor/blob/master/addon/components/simditor-editor.js) component 的实现。

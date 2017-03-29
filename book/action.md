@@ -102,6 +102,7 @@ export default Ember.Component.extend({
 
 component 的第一个参数就是原始的 event 对象
 
+
 ## 默认的 action 行为
 
 The normal behavior for a function defined in actions does not receive the browser event as an argument.
