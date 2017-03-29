@@ -9,6 +9,6 @@
     * [loading 和 error](book/route/route-loading-error.md)
     * [404 的实现](book/route/404.md)
 * [component](book/component/index.md)
-    * [自定义 component 模板和内容](book/component/custome-component.md)
+    * [自定义 component](book/component/custome-component.md)
     * [component 的生命周期](book/component/component.md)
 * [action](book/action.md)

@@ -2,7 +2,6 @@
 
 传递参数向 component 可以提供 component 模板渲染的所需要的内容，如果想自定义 component 的模板，可以使用 `block form`，即在模板中使用 `{{yield}}` 表达式。 
 
-component `blog-post`
 
 ```html
 # app/templates/components/blog-post.hbs
@@ -19,9 +18,9 @@ component `blog-post`
 
 其中模板内部的部分` <p class="author">by {{author}}</p>  {{body}}` 将会替代 yield 出现的地方。
 
-**组件的内部内容和组件外部进行通信**
+## 返回 component 内部的值
 
-hbs 提供了两个非常有用的 helper `component ` 和 `hash ` 来动态渲染组件内容， hash 可以把组件内部的内容传递到组件外部供组件外部使用。
+使用 yield 可以把组件内部的内容传递到组件外部供组件外部使用。
 
 ```handlebars
 # app/templates/components/blog-post.hbs
@@ -30,7 +29,7 @@ hbs 提供了两个非常有用的 helper `component ` 和 `hash ` 来动态渲�
 
 ```
 
-此种场景之下，blog-post 根据组件外部传来的 editStyle 选择对应的组件进行渲染，然后通过 hash 的方式传递组件内部的值到外部，外部可以通过 as 的方式拿到组件内部的值
+此种场景之下，blog-post 根据组件外部传来的 editStyle 动态选择对应的组件进行渲染，然后通过 hash 的方式 wrap 组件内部的值，并且通过 yield 的方式返回到外部，外部可以通过 as 的方式拿到组件内部的值
 
 ```handlebars
 {{#blog-post editStyle="markdown-style" postData=myText as |post|}}
@@ -40,8 +39,6 @@ hbs 提供了两个非常有用的 helper `component ` 和 `hash ` 来动态渲�
 ```
 
 `as |post|` 对应的是组件内部的 （hash body=(component editStyle postData=postData))，
-
-## 返回 component 内部的值
 
 
 自定义 component 内容时，我们提到了 `block form`，使用 `yield` 表达式可以返回 component 内部的值供外部使用
@@ -76,3 +73,90 @@ app/templates/components/blog-post.hbs
   <p>{{post.body}}</p>
 {{/if}}
 ```
+
+
+# 自定义 component 的 html 元素和属性
+
+component 默认是使用 `div` 进行包裹，ember 提供了不同方法来修改 component 的 html 标签、html attribute、html class
+
+
+### 自定义 component html Element
+
+```javascript
+import Ember from 'ember';
+
+export default Ember.Component.extend({
+  tagName: 'nav'
+});
+```
+
+component 的 `tagName` 属性可以修改 component 的包裹元素
+
+
+### 自定义 component html Element attribute 
+
+component 有不同的属性来分别自定义元素属性和元素 class: `attributeBindings`、`classNameBindings` 和 `classNames`。
+
+
+```javascript
+import Ember from 'ember';
+
+export default Ember.Component.extend({
+  classNames: ['primary'],
+  classNameBindings: ['myclass'],
+  attributeBindings: ['href'],
+  href: 'http://emberjs.com',
+});
+```
+
+借助 JavaScript 的可计算能力，这些属性都可以动态进行计算和添加。
+
+**普通 classs**
+
+`classNames` 属性是一个 class 字符串组成的数组，用来自定义 component 上的 class
+
+**动态绑定 class**
+
+`classNameBindings` 属性可以动态计算 component 的 class
+
+```javascript
+import Ember from 'ember';
+
+export default Ember.Component.extend({
+  classNameBindings:['isUrgent','isActive:active','isEnabled:enabled:disabled','priority'],
+  isUrgent: true,
+  isActive: true,
+  isEnabled: false,
+  priority: 'highestPriority',
+});
+```
+
+计算规则如下：
+
+1. 默认 isUrgent 驼峰风格的值为 ture 时，class 为 is-urgent，false 时无 class
+2. 自定义 class 名字，可以写成像 isActive:active，值为 ture 时，class 为 active，false 时无 class
+3. 属性值为字符串，class 为属性的值
+
+上面的组件渲染以后如下
+
+```html
+<div class="ember-view is-urgent active disabled highestPriority">
+```
+
+**动态绑定 attribute**
+
+```javascript
+import Ember from 'ember';
+
+export default Ember.Component.extend({
+  tagName: 'a',
+  title: null,
+  customeAlt: 'link'
+  attributeBindings: ['href','title', 'customeAlt:alt'],
+  href: 'http://emberjs.com'
+});
+```
+
+可以在 `attributeBindings` 中指定绑定的属性，当属性为空时不渲染，否则渲染对应的属性值，也可以自定义属性对应的名字如 `customeAlt:alt`
+
+

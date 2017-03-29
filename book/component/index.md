@@ -1,6 +1,6 @@
 # 认识 Component 
 
-Component 是 emberjs 中的重要概念，emberjs 的Component 和 vuejs以及reactjs等 ui-Component 概念大同小异，并无本质的差别，都是具有独立逻辑可复用的组件单元。
+Component 是 emberjs 中的重要概念，emberjs 的 Component 和 vuejs 以及 reactjs 等 ui-Component 概念大同小异，并无本质的差别，都是具有独立逻辑可复用的组件单元。
 
 ## 定义 Component 
 
