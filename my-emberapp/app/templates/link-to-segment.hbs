@@ -1,0 +1,10 @@
+<p>
+    {{get model 'name'}}
+</p>
+<p>
+    {{!-- {{#link-to "link-to-segment" model}}link-to-segment{{/link-to}} --}}
+    {{#link-to "link-to-segment" (get model 'id')}}link-to-segment{{/link-to}}
+</p>
+<p>
+    {{#link-to "link-to-segment" model.id}}link-to-segment{{/link-to}}
+</p>

@@ -4,7 +4,7 @@ Component 是 emberjs 中的重要概念，emberjs 的 Component 和 vuejs 以�
 
 ## 定义 Component 
 
-Component 的定义非常简单，只要有一个 `template.hbs`模板就可以定义一个Component，也就是说当你只需要一个不断重复的模板片段，而没有任何 JavaScript 逻辑时，Component 就能帮上忙。
+Component 的定义非常简单，只要有一个 `template.hbs`模板就可以定义一个 Component，也就是说当你只需要一个不断重复的模板片段，而没有任何 JavaScript 逻辑时，Component 就能帮上忙。
 
 ```bash
 ± % ember g component my-first-component 
@@ -77,7 +77,7 @@ BlogPostComponent.reopenClass({
 export default BlogPostComponent;
 ```
 
-占位参数必须是在 component class 声明的属性，而且运行时不可以改变，代码中使用 reopenClass 把占位参数声明为component 的静态变量。
+占位参数必须是在 component class 声明的属性，而且运行时不可以改变，代码中使用 reopenClass 把占位参数声明为 component 的静态变量。
 
 ```handlebars
   {{blog-post post.title post.body}}

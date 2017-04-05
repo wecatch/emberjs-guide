@@ -26,6 +26,8 @@ Router.map(function() {
     this.route('first-component');
     this.route('second-component');
   });
+  this.route('template-context');
+  this.route('link-to-segment', {path:'/link-to-segment/:segment_id'});
 });
 
 export default Router;
