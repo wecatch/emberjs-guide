@@ -10,7 +10,7 @@
     * [404 的实现](book/route/404.md)
 * [component](book/component/index.md)
     * [自定义 component](book/component/custome-component.md)
-    * [component 的生命周期](book/component/component.md)
+    * [component 的生命周期](book/component/component-life-circle.md)
     * [component 的事件处理](book/component/action.md)
 * [template](book/template/index.md)
     * [link-to](book/template/link-to.md)
