@@ -28,6 +28,9 @@ Router.map(function() {
   });
   this.route('template-context');
   this.route('link-to-segment', {path:'/link-to-segment/:segment_id'});
+  this.route('photos', function() {
+    this.route('edit', {path:'/:photo_id'});
+  });
 });
 
 export default Router;

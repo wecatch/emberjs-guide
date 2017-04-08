@@ -1,6 +1,6 @@
 # ember template
 
-ember 中的 template engine 是 handlebars，提供有属性、逻辑、分支等不同模板属性的使用，而且还提供了 helper 一种具有 JavaScript 逻辑的函数表达式。
+ember 中的 template engine 是 handlebars，提供有属性、逻辑、分支等不同模板属性，而且还提供了 helper 一种具有 JavaScript 逻辑的函数表达式，可以用来实现自定义模板属性。
 
 每个 template 文件 hbs 都具有一个上下文 context 用来获取属性的值，通过 route 渲染的 hbs 的上下文 context 是 controller，而 component 中的 hbs 对应的上下文就是 component 的 JavaScript 文件，如果 component 用了 `block form` 形势，其 context 还包括使用 component 的父容器，有时候是一个 controller，有时候是一个 parent component。
 
@@ -28,7 +28,7 @@ Ember.TextField.reopen({
 });
 ```
 
-## 条件表达式
+## 条件表达式 if else
 
 在 hbs 中可以很方便完成 `if else` 等简单的条件元素，为此 ember handlebars 提供了  `if` 和 `unless` 等 helper。
 
@@ -84,7 +84,7 @@ Ember.TextField.reopen({
 ```
 
 
-## 循环表达式
+## each 表达式
 
 迭代一个 list 使用 `each` 表达式。
 

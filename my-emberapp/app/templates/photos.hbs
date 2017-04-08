@@ -1,0 +1,9 @@
+<ul>
+    {{#each model as |photo index|}}
+    <li>
+        {{#link-to "photos.edit" photo (query-params keyword='qq') }}photo {{index}} {{/link-to}}
+    </li>
+    {{/each}}
+</ul>
+
+{{outlet}}
