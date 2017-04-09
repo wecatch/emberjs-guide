@@ -15,6 +15,7 @@ emberjs 将逐渐移除 controller，view 这些传统 MVC 中的概念，
 - router
 - route
 - model
+- controller
 - service
 - component
 
