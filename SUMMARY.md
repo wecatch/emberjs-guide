@@ -17,4 +17,5 @@
     * [自定义 component](book/component/custome-component.md)
     * [component 的生命周期](book/component/component-life-circle.md)
     * [component 的事件处理](book/component/action.md)
+* [ember-cli](book/cli/index.md)
 * [action](book/action.md)

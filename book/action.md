@@ -1,6 +1,23 @@
 # ember action
 
-ember 中的 action 顾名思义代表的是事件的处理，ember 的事件可以定义在 component、route、controller、application 中，事件会优先在 controller 中查找，如果没有找到会向 route 冒泡，直到 application。
+ember 中的 action 顾名思义代表的是事件的处理，在 controller、route、application 以及 component 都有一个 `actions` hash 用来定义相应的 action，在 template 中使用 action 使用 handlebar 提供的 `action` helper。
+
+action 根据自身 context 的不同会在不同 上下文的 actions 查找。route 对应的 template 中的 action 会优先在 controller 中查找，如果没有找到会向 route 冒泡，直到 application。component 中的 action 在 component 中查找，并且可以向父容器冒泡。
+
+
+```javascript
+
+actions: {
+    deleteUser(){
+        //todo
+    }
+}
+
+```
+
+```html
+<button class="button" {{action "deleteUser" }} >delete user</button>
+```
 
 ## 指定事件类型
 
