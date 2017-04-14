@@ -2,7 +2,7 @@
 
 * [为什么是 emberjs](book/why-emberjs.md)
 * [introduction](book/emberjs-2.0.md)
-    * [构建 emberjs 应用程序](book/create-app.md)
+    * [构建 ember 应用程序](book/create-app.md)
     * [ember app 目录结构介绍](book/app-dir-structure.md)
     * [Hello world](book/hello-world.md)
 * [route](book/route/index.md)
@@ -14,7 +14,8 @@
     * [helper index](book/template/helper-index.md)
     * [develper helper](book/template/dev-helper.md)
 * [component](book/component/index.md)
-    * [自定义 component](book/component/custome-component.md)
+    * [自定义 component 模板和内容](book/component/custome-component.md)
+    * [自定义 component 的 html 元素和属性](book/component/custome-component-html.md)
     * [component 的生命周期](book/component/component-life-circle.md)
     * [component 的事件处理](book/component/action.md)
 * [ember-cli](book/cli/index.md)

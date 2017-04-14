@@ -1,16 +1,11 @@
-# 构建 emberjs 应用程序
+# 构建 ember 应用程序
 
-构建 ember app 推荐使用官方出品的构建工具 [ember-cli](http://www.embercli.com)
-
+构建 ember app 推荐使用官方出品的构建工具 [ember-cli](http://www.ember-cli.com)
 
 ## 安装 ember-cli
 
-ember-cli 需要版本在 0.12 之上的 nodejs 环境
-
 ```
-
 npm install -g ember-cli
-
 ```
 
 ## 构建第一个 ember 项目

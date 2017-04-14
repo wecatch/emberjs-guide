@@ -35,14 +35,14 @@ installing component-test
 
 使用 Component 非常简单，像这样
 
-```hbs
+```handlebars
 {{#my-first-component}}{{/my-first-component}}
 ```
 
 
 ## 动态渲染 Component
 
-```hbs
+```handlebars
 {{#each model as |post|}}
   {{!-- either foo-component or bar-component --}}
   {{component post.componentName post=post}}

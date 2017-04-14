@@ -63,7 +63,7 @@ The model hooks (beforeModel, model, and afterModel) of an error substate are no
 
 当 error 发生是，error substate 的 route 中的 beforeModel，model，afterModel hooks 并不会被调用，只有 setupController 被调用
 
-```
+```javascript
 setupController: function(controller, error) {
   Ember.Logger.debug(error.message);
   this._super(...arguments);
@@ -78,7 +78,7 @@ If no viable error substates can be found, an error message will be logged.
 
 同理 loading event，error event 会被触发当有错误或者异常出现，如果当前 route 不提供 handler 来处理，这个事件会不断冒泡
 
-```
+```javascript
 import Ember from 'ember';
 
 export default Ember.Route.extend({

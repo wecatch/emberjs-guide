@@ -22,14 +22,19 @@
 
 秉承`约定优于配置`的设计理念，ember app 的目录结构，文件命名，变量名由官方做了统一规范。
 
-## Component
+## Route
 
-`Component` 是具有独立逻辑、属性、UI的一个相对独立的单元。`Component`
-最大的特点就是复用性强，极强的提高了前端的生产效率。
+路由，一个 url 对应一个路由，路由负责数据提取与页面之间的跳转。
 
 ## Controller
 
-ember 2.0 将逐步移除controller，建议少用
+每个 route 都对应一个 controller，controller 是 template 的上下文，template 中的数据、事件等来自 controller。
+
+## Component
+
+`Component` 是具有独立逻辑、属性、UI的一个相对独立的单元。`Component`
+最大的特点就是复用性强。
+
 
 ## Helper
 
@@ -40,18 +45,15 @@ helper 完成复杂逻辑判断和数据处理。
 
 一组或一个数据单元
 
-## Route
-
-路由，一个 url 对应一个路由，路由负责数据提取与页面之间的跳转
 
 ## Template
 
-一个route对应一个模板，一个Component也对应一个模板(Component可以没有模板)
+一个route对应一个模板，一个Component也对应一个模板(Component可以没有模板)。
 
 
 ## Router
 
-统一管理所有路由的
+统一管理所有路由的。
 
 
 ## Service
