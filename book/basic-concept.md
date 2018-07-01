@@ -7,7 +7,7 @@
 {{X external = value}}
 ```
 
-在 X 模板中，使用 Y 组件，并把 X 的 internal 传递给 Y 的 external，也就是说 X 的内部变量现在是Y的外部变量。
+在 X 模板中，使用 Y 组件，并把 X 的 internal 传递给 Y 的 external，也就是说 X 的内部变量现在是 Y 的外部变量。
 
 ``` hbs
 {{Y external = internal}}
