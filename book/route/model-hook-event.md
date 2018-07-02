@@ -33,3 +33,29 @@ Note: A route with a dynamic segment will always have its model hook called when
 
 一个带 dynamic segment 的 url 如果总是通过浏览器的 url 进入，那么 route 的 model hook 总是会被调用。
 如果一个 route 是通过 transition 进入，比如 link-to 组件，而且还提供了 model 上下文，比如 link-to 的第二个参数是一个 object，这表示 model 需要数据其实已经存在了，这是 hook 都不会被调用。如果第二个参数是一个标识符，比如 id 或其他，那么 model hook 会被调用。
+
+```hbs
+<h1>Photos</h1>
+{{#each model as |photo|}}
+  <p>
+    {{#link-to "photo" photo}}
+      <img src="{{photo.thumbnailUrl}}" alt="{{photo.title}}" />
+    {{/link-to}}
+  </p>
+{{/each}}
+```
+上面传给 link-to 的是 model，hook 不会被调用。
+
+```hbs
+<h1>Photos</h1>
+{{#each model as |photo|}}
+  <p>
+    {{#link-to "photo" photo.id}}
+      <img src="{{photo.thumbnailUrl}}" alt="{{photo.title}}" />
+    {{/link-to}}
+  </p>
+{{/each}}
+```
+上面传给 link-to 的是 id，hook 会被调用。
+
+**不带 dynamic segment 的 route 不论传递什么参数总是会被调用**
