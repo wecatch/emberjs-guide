@@ -26,13 +26,30 @@ renderTemplate(){
 ## 子 route 中获取 parent params
 
 
-```
+```javascript
 import Ember from 'ember';
 import {find_project_by_name} from '../data/main';
 
 export default Ember.Route.extend({
     model(param, transition){
         return  find_project_by_name(transition.params.project.org, param.project_name);
+    }
+});
+
+```
+
+## route 中请求多个 API
+
+```javascript
+import Route from '@ember/routing/route';
+import { hash } from 'rsvp';
+
+export default Route.extend({
+    model(params){
+        return hash({
+            app: this.store.findOne('app', params.id),
+            computer: this.store.find('computer', {appid: params.id})
+        });
     }
 });
 
