@@ -32,7 +32,7 @@ import {find_project_by_name} from '../data/main';
 
 export default Ember.Route.extend({
     model(param, transition){
-        return  find_project_by_name(transition.params.project.org, param.project_name);
+        return  find_project_by_name(transition.params["project.org"]}, param.project_name);
     }
 });
 
@@ -54,3 +54,18 @@ export default Route.extend({
 });
 
 ```
+
+## route 支持多个 dynamic segment
+
+```javascript
+Ember.Route.extend({
+    serialize: function(model) {
+        return {
+            listing_id : model.get("listing_id"),
+            video_id : model.get("id")
+        };
+    }
+})
+```
+
+params 支持改写
