@@ -69,3 +69,7 @@ Ember.Route.extend({
 ```
 
 params 支持改写
+
+## 子 controller 获取父 controller model
+
+通过 inject controller 来获取 model，但是这个 controller 必须要显式存在，也就是 controller 文件必须要存在，否则由于 ember 会默认在 runtime 生成没有声明的 controller 对象，在当前业务如果是通过url进入，不知道什么原因，ember 并未生成 controller 对象
