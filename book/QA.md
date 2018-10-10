@@ -73,3 +73,8 @@ params 支持改写
 ## 子 controller 获取父 controller model
 
 通过 inject controller 来获取 model，但是这个 controller 必须要显式存在，也就是 controller 文件必须要存在，否则由于 ember 会默认在 runtime 生成没有声明的 controller 对象，在当前业务如果是通过url进入，不知道什么原因，ember 并未生成 controller 对象
+
+## 已经渲染并且使用过的组件如何恢复到初始状态
+
+这个问题经常在选择组件中，比如 CheckBox group，CheckBox 已经在一次弹窗中使用过了，再次弹窗的时候需要把这组组件恢复到都未选中的状态，这个场景下最好把整个组件再次封装称为新的组件，动态的在渲染一次组件
+
