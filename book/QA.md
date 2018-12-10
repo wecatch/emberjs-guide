@@ -78,3 +78,27 @@ params 支持改写
 
 这个问题经常在选择组件中，比如 CheckBox group，CheckBox 已经在一次弹窗中使用过了，再次弹窗的时候需要把这组组件恢复到都未选中的状态，这个场景下最好把整个组件再次封装称为新的组件，动态的在渲染一次组件
 
+## 返回到前一次 route
+
+可以再 Router 中覆写 `didTransition` 函数，每次 route 进入之后会调用此函数，然后拿到 `currentURL` 存于 localStoreage ，只存最近访问的两次
+```javascript
+  didTransition: function() {
+    this._super(...arguments);
+    let routeName = this.currentURL;
+    if (!localStorage['routeList']){
+      localStorage['routeList'] = routeName;
+      this.set('previousRouteName', routeName);
+    }else {
+      localStorage['routeList'] = routeName + "," +localStorage['routeList'];
+      let routeList = localStorage['routeList'].split(",");
+      routeList = routeList.splice(0, 2);
+      this.set('previousRouteName', routeList[0]);
+      localStorage['routeList'] = routeList.join(",")
+    }
+  }
+```
+
+## 父组件和子组件的通信
+
+ember 父子组件通信是个比较麻烦的事情。首先如果子组件直接在父组件中，而不是通过 yield 的形式嵌入进去的，可以让父子组件都监听相同的值来完成通信
+
