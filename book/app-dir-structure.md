@@ -58,18 +58,18 @@ helper 完成复杂逻辑判断和数据处理。
 
 ## Service
 
-ember 官方对 service 的解释
+ember 官方对 service 的解释：
 
 An Ember.Service is a long-lived Ember object that can be made available in different parts of your application.
 
 Example uses of services include:
 
-- Logging
-- User/session authentication
+- Logging 日志
+- User/session authentication session
 - Geolocation
-- Third-party APIs
-- Web Sockets
-- Server-sent events or notifications
+- Third-party APIs 第三方 API
+- Web Sockets websocket
+- Server-sent events or notifications 事件或通知
 - Server-backed API calls that may not fit Ember Data
 
 

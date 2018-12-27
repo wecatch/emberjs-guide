@@ -1,6 +1,6 @@
 # 构建 ember 应用程序
 
-构建 ember app 推荐使用官方出品的构建工具 [ember-cli](http://www.ember-cli.com)
+构建 ember app 推荐使用官方出品的构建工具 [ember-cli](https://cli.emberjs.com/release/)
 
 ## 安装 ember-cli
 

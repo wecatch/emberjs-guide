@@ -1,7 +1,7 @@
 # Summary
 
 * [为什么是 emberjs](book/why-emberjs.md)
-* [introduction](book/emberjs-2.0.md)
+* [introduction](book/emberjs.md)
     * [构建 ember 应用程序](book/create-app.md)
     * [ember app 目录结构介绍](book/app-dir-structure.md)
     * [Hello world](book/hello-world.md)

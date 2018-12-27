@@ -23,6 +23,7 @@ emberjs 被 wecatch 选中用于比较复杂的资源管理项目中，比如公
 - 有成熟的案例[builtwithember](http://builtwithember.io/)
 - 有活跃的社区[discuss](http://discuss.emberjs.com/)
 - 类似于传统 MVC 的模板表达语言[handlebars](http://handlebarsjs.com/)
+- 有丰富的库 https://emberobserver.com/
 > 方便不了解前端的后端同学来实现 html 的逻辑
 
 这些优势让 wecatch 选择了 [emberjs](http://emberjs.com/)
