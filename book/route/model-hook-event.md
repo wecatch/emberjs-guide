@@ -9,7 +9,7 @@ ember 的 route 通过 model hook 来处理来自后端的数据，其中 model 
 
 ## dynamic segment
 
-在 ember app 中 url 不仅仅反应的是不要渲染不同的 template，也可能代表要渲染不同的 model，route 正式根据 url 中的 dynamic segment 进行不同 model 的获取。
+在 ember app 中的 url 不仅仅反应的是要渲染不同的 template，也可能代表要渲染不同的 model，route 是根据 url 中的 dynamic segment 来过滤 model 的。
 
 ```javascript
 Router.map(function() {
