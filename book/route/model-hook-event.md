@@ -7,26 +7,6 @@ ember 的 route 通过 model hook 来处理来自后端的数据，其中 model 
 
 默认情况下 route 通过在 model 中返回 promise 或者 普通的 JavaScript 对象来提供数据，如果是 promise，route 会等待 promise 解析完成才去渲染 template。
 
-## dynamic segment
-
-在 ember app 中的 url 不仅仅反应的是要渲染不同的 template，也可能代表要渲染不同的 model，route 是根据 url 中的 dynamic segment 来过滤 model 的。
-
-```javascript
-Router.map(function() {
-  this.route('photo', { path: '/photos/:photo_id' });
-});
-```
-一旦定义了 dynamic segment，ember 会在 model hook 的第一个参数以 hash 的方式提供：
-```javascript
-import Route from '@ember/routing/route';
-
-export default Route.extend({
-  model(params) {
-    return this.get('store').findRecord('photo', params.photo_id);
-  }
-});
-```
-
 ## model hook 何时被调用
 
 Note: A route with a dynamic segment will always have its model hook called when it is entered via the URL. If the route is entered through a transition (e.g. when using the link-to Handlebars helper/), and a model context is provided (second argument to link-to), then the hook is not executed. If an identifier (such as an id or slug/) is provided instead then the model hook will be executed.
