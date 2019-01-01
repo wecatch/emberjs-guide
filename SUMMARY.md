@@ -6,7 +6,7 @@
     * [ember app 目录结构介绍](book/app-dir-structure.md)
     * [Hello world](book/hello-world.md)
 * [Route](book/route/index.md)
-    * [model](book/route/model-hook-event.md)
+    * [model](book/route/model.md)
     * [query-parameter](book/route/query-params.md)
     * [loading 和 error](book/route/route-loading-error.md)
     * [404 的实现](book/route/404.md)

@@ -5,7 +5,7 @@ ember 的 route 通过 model hook 来处理来自后端的数据，其中 model 
 - beforeModel
 - afterModel
 
-默认情况下 route 通过在 model 中返回 promise 或者 普通的 JavaScript 对象来提供数据，如果是 promise，route 会等待 promise 解析完成才去渲染 template。
+默认情况下 route 通过在 model 中返回 promise 或者普通的 JavaScript 对象来提供数据，如果是 promise，route 会等待 promise 解析完成才去渲染 template。
 
 ## model hook 何时被调用
 

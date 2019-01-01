@@ -1,4 +1,4 @@
-在 Ember app 中，和传统的 web 应用一样，URL 代表着一切，你可以从 URL 上得知当前用户是在查看一篇文章还是在编辑一篇文章，Ember app 就是通过 url 来管理这一切的。
+Ember app 和传统的 web 应用一样，URL 代表着一切，你可以从 URL 上得知当前用户是在查看一篇文章还是在编辑一篇文章，Ember app 就是通过 url 来管理这一切的。
 
 一般来说，URL 可以以下几种方式改变：
 
@@ -132,7 +132,7 @@ Router.map(function() {
 
 ## Dynamic segment
 
-在 Ember app 中的 URL 不仅仅反应的是要渲染不同的 template，也可能代表要渲染不同的 model，route 是根据 URL 中的 dynamic segment 来过滤 model 的。
+Ember app 中的 URL 不仅仅反应的是要渲染不同的 template，也可能代表要渲染不同的 model，route 是根据 URL 中的 dynamic segment 来过滤 model 的。
 
 ```javascript
 Router.map(function() {
@@ -141,9 +141,9 @@ Router.map(function() {
 });
 ```
 
-在上面的路由中，`posts` 代表的就是列表的 model，不需要用任何条件过滤，而 `post` 代表的是具体某个 model，需要 URL 中的 `:` 后面部分的 `post_id` 来标识 表示 URL 的 dynamic segment，比如 访问 `/posts/5` 含义就是 `post_id` 部分是 5，Ember 会把 dynamic segment 作为一个 `hash object` 传给 route 的 model 函数。
+在上面的路由中，`posts` 代表的就是列表的 model，不需要用任何条件过滤，而 `post` 代表的是具体某个 model，需要 URL 中的 `:` 后面部分的 `post_id` 来标识，表示 URL 的 dynamic segment，比如访问 `/posts/5` 含义就是 `post_id` 部分是 5，Ember 会把 dynamic segment 作为一个 `hash object` 传给 route 的 model 函数。
 
-```
+```javascript
 import Route from '@ember/routing/route';
 
 export default Route.extend({
@@ -165,4 +165,32 @@ Router.map(function() {
 ```
 
 上面相同 key 是无法工作的。
+
+## wildcard route
+
+通配符 route 是表示如果没有任何一个 route 能够匹配当前的 URL，则路由到 wildcard route 上：
+
+```javascript
+Router.map(function() {
+  this.route('not-found', { path: '/*path' });
+});
+```
+
+需要注意的是如果想手动重定向到这样的 route 上，需要带上任意非空的参数：
+
+```javascript
+this.transitionTo('not-found', 404);
+```
+
+## route 之间的切换
+
+在 Ember App 中如何对不同的 route 进行切换取决于 transition 发生的位置。
+
+如果在 template 中，使用 `{{link-to}}`
+
+如果在 route 中，使用  [`transitionTo()`](https://emberjs.com/api/ember/release/classes/Route/methods/transitionTo?anchor=transitionTo)
+
+如果在 controller 中，使用 [`transitionToRoute()`](https://emberjs.com/api/ember/release/classes/Controller/methods/transitionToRoute?anchor=transitionToRoute)
+
+如果在 Component 中，注入 router service，使用 transitionTo()
 
