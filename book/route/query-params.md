@@ -1,4 +1,4 @@
-## url 的 query parameter
+## URL 的 query parameter
 
 默认情况 url 中的 query parameter 会一直带在 url 的后面，可以显示指定让其消失，按照下面的方法
 

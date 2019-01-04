@@ -1,4 +1,4 @@
-# route 的 loading 和 error 
+# Route 的 loading 和 error 
 
 ember 通过模式匹配进行错误和 loading 处理，在 route 中的 beforeModel, model 和 afterModel hooks 提供进行 promise 解析前、中、后的处理。
 
