@@ -1,11 +1,46 @@
-# route 的 model hook 
+# model
 
-ember 的 route 通过 model hook 来处理来自后端的数据，其中 model hook 包括：
-- model
+ember 的 route 通过 model hook 来处理来自后端的数据，比如 router 定义了一个 route
+
+```javascript
+Router.map(function() {
+  this.route('favorite-posts');
+});
+```
+
+在 route 的 handler 中使用 model 这个 hook 来提供数据进行渲染：
+
+```javascript
+import Route from '@ember/routing/route';
+
+export default Route.extend({
+  model() {
+    return this.store.query('post', { favorite: true });
+  }
+});
+```
+
+默认情况下 route 通过在 model 中返回 promise 或者普通的 JavaScript 对象来提供数据，如果是 promise，route 会等待 promise 解析完成才去渲染 template。
+
+Route 会把 model 返回的 value 挂在 controller 的 model 属性上，然后就可以在 template 中引用来自 controller 的 model 了：
+
+```handlebars
+<h1>Favorite Posts</h1>
+{{#each model as |post|}}
+  <p>{{post.body}}</p>
+{{/each}}
+```
+
+除了 model 这个 hook ，route 还提供了
+
 - beforeModel
 - afterModel
 
-默认情况下 route 通过在 model 中返回 promise 或者普通的 JavaScript 对象来提供数据，如果是 promise，route 会等待 promise 解析完成才去渲染 template。
+这两个 hook 来完成在 model 解析前和解析后的工作。
+
+## dynamic model
+
+
 
 ## model hook 何时被调用
 
