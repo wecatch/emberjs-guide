@@ -121,3 +121,26 @@ export default Controller.extend(godForm, {
 
 ember 父子组件通信是个比较麻烦的事情。首先如果子组件直接在父组件中，而不是通过 yield 的形式嵌入进去的，可以让父子组件都监听相同的值来完成通信
 
+
+## 全局依赖管理
+
+Ember app 中大部分的依赖通过 npm 来管理，有少部分包还需要用 bower 来引入，但是绝大部分可以不需要了，通过 npm 引入依赖：
+```
+npm install package --save
+```
+
+如果报是全局的，还可以通过 shims 的形式替代用 import 导入，首先生成 shim
+```
+ember generate vendor-shim moment
+``` 
+如果这是在 Ember Addon 中，然后在 index 中：
+```
+app.import('vendor/shims/moment.js');
+```
+
+如果是在 Eember app 中，在 ember-cli-build 中管理
+
+
+
+
+
