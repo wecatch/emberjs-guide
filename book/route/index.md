@@ -194,3 +194,5 @@ this.transitionTo('not-found', 404);
 
 如果在 Component 中，注入 router service，使用 transitionTo()
 
+如果是 replaceWith，那么 route 不会加入 history 中
+
