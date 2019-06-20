@@ -17,19 +17,19 @@
 
 Component 第一次初始化要历经：
 
-```
+```JavaScript
 init-->didReceiveAttrs-->willRender-->didInsertElement-->didRender
 ```
 
 当组件渲染完毕，之后属性发生改变再次渲染时又会历经:
 
-```
+```JavaScript
 didUpdateAttrs-->didReceiveAttrs-->willUpdate-->willRender-->didUpdate-->didRender
 ```
 
 组件生命周期结束之后被销毁会历经
 
-```
+```JavaScript
 willDestroyElement-->willClearRender-->didDestroyElement
 ```
 
@@ -40,16 +40,16 @@ willDestroyElement-->willClearRender-->didDestroyElement
 
 初始化组件，在此 hooks 可以完成对相应属性的最基本的声明和初始化工作
 
-## **didUpdateAttrs**
+## 使用 **didUpdateAttrs** 重置组件的展示状态 
 
 didUpdateAttrs runs when the attributes of a component have changed, but not when the component is re-rendered, via component.rerender, component.set, or changes in models or services used by the template.
 
-didUpdateAttrs 在 attrs 发生改变之后执行，而不是 Component 通过 component.rerender, component.set, or changes in models or services 发生改变，并且在 re-render 之前执行。
+didUpdateAttrs 在 attrs 发生改变之后执行，并且在 re-render 之前执行，但是 Component 通过 component.rerender, component.set, or changes in models or services 发生改变 时不会触发 didUpdateAttrs。
 
 可以把此 hooks 当成很好的 observer 来执行相应的处理逻辑。需要注意：didUpdateAttrs 执行是指 component 从外部传递的属性发生改变，而不是 Component 内部属性发生改变，比如通过 set 改变 Component 某个属性。
 
 
-```
+```handlebars
 <ul class="errors">
   {{#each errors as |error|}}
     <li>{{error.message}}</li>
@@ -61,61 +61,89 @@ didUpdateAttrs 在 attrs 发生改变之后执行，而不是 Component 通过 c
   {{input name="user.email" value=email change=(action "required")}}
 </fieldset>
 
+```
 
-import Ember from 'ember';
+```JavaScript
+import { A } from '@ember/array';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
+export default Component.extend({
   init() {
     this._super(...arguments);
-    this.errors = [];
+    this.set('errors', A([]));
   },
 
   didUpdateAttrs() {
     this._super(...arguments);
-    this.set('errors', []);
+    this.set('errors', A([]));
   },
 
   actions: {
     required(event) {
       if (!event.target.value) {
-        this.get('errors').pushObject({ message: `${event.target.name} is required`});
+        this.errors.pushObject({ message: `${event.target.name} is required`});
       }
     }
   }
 });
 ```
 
-## **didReceiveAttrs**
+## 使用 **didReceiveAttrs** 格式化 component Attributes
 
 didReceiveAttrs runs after init, and it also runs on subsequent re-renders, which is useful for logic that is the same on all renders. It does not run when the re-render has been initiated internally.
 
-didReceiveAttrs 在 init 之后执行，也会在 re-render 时在 didUpateAttrs 之后执行，因此这个 hooks 可以用在初次渲染和再次渲染时处理相同的业务逻辑，同 didUpdateAttrs 一样，可以当成一个 observer。如果 re-render 是由 Component 内部触发引起的，此 hooks 并不会执行。
+didReceiveAttrs 在 init 之后执行，也会在 re-render 时在 didUpdateAttrs 之后执行，因此这个 hooks 可以用在初次渲染和再次渲染时处理相同的业务逻辑，同 didUpdateAttrs 一样，可以当成一个 observer。如果 re-render 是由 Component 内部触发引起的，此 hooks 并不会执行，比如更改了 component 一个 property。
 
-## **didInsertElement**
+
+比如下面的例子根据传入的 data 格式来格式化数据
+
+```JavaScript
+import Component from '@ember/component';
+
+export default Component.extend({
+  didReceiveAttrs() {
+    this._super(...arguments);
+    const profile = this.data;
+    if (typeof profile === 'string') {
+      this.set('profile', JSON.parse(profile));
+    } else {
+      this.set('profile', profile);
+    }
+  }
+});
+```
+
+## 使用 **didInsertElement** 集成第三方组件
 
 After a component successfully renders its backing HTML element into the DOM, it will trigger its didInsertElement() hook.
 
 一个 Component 的所有 dom 都渲染完毕之后会执行此 hook，这个时候就可以在此执行和调用第三方库进行 dom 的修改或事件的绑定，但是请谨记，这个 hook 只在初次渲染时调用。
 
 - The component's element has been both created and inserted into the DOM.
-- The component's element is accessible via the component's $() method.
+- The component's element is accessible via the component's `this.element`
 
-`$()` 返回的是 Component 的 root element 的 jquery object，如果需要获得子 dom，可以使用 child 选择器 `this.$('p')`。
+`this.element` 返回的是纯 dom，如果需要 jQuery，可以 `import jquery from "@ember/jquery"`, 然后使用 `$(this.elment)`
+
+
+```JavaScript
+import Component from '@ember/component';
+
+export default Component.extend({
+  didInsertElement() {
+    this._super(...arguments);
+    this.element.setAttribute('contenteditable', true);
+  }
+});
+
+```
 
 注意事项：
 
-- It is only triggered once when the component element is first rendered.
-- In cases where you have components nested inside other components, the child component will always receive the didInsertElement() call before its parent does.
-- Setting properties on the component in didInsertElement() triggers a re-render, and for performance reasons, is not allowed.
-- While didInsertElement() is technically an event that can be listened for using on(), it is encouraged to override the default method itself, particularly when order of execution is important.
+- It is only triggered once when the component element is first rendered -- 只在组件第一次渲染执行一次
+- In cases where you have components nested inside other components, the child component will always receive the didInsertElement() call before its parent does -- 子组件总是比父组件优先调用.
+- Setting properties on the component in didInsertElement() triggers a re-render, and for performance reasons, is not allowed -- 不要在 didInsertElement 中执行更改组件属性的行为.
+- While didInsertElement() is technically an event that can be listened for using on(), it is encouraged to override the default method itself, particularly when order of execution is important -- 可以使用 on 来监听 didInsertElement 方法，为了保证所有的 hook 可以正确按照顺序调用可以考虑覆盖默认方法.
 
-
-
-
-- 只在初始化渲染调用
-- 子组件的 didInsertElement 调用总是比父组件早
-- 在 didInsertElement 中改变 Component 属性能够触发重新 re-render，所以不要这么做。
-- 即使可以使用 on 来监听 didInsertElement 方法，但是避免这样做，为了保证所有的 hook 可以正确按照顺序调用
 
 
 ## **didRender**

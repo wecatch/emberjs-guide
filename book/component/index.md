@@ -19,7 +19,7 @@ installing component-test
 在上面例子中的 my-first-component 即使删除 my-first-component.js 这个 Component 依然有效，需要注意的是，Component 的名字组成**必须要有连接符-**，这是 emberjs 的约定。使用 emberjs 的脚手架创建的 Component hbs 和 js 分别位于不同的文件夹，有时候为了方便管理，可以都放置于 Components 文件夹下面，使用 `--pod`
 
 ```
-± % ember g component my-second-component -p true                              
+± % ember g component my-second-component --pod
 installing component
   create app/components/my-second-component/component.js
   create app/components/my-second-component/template.hbs
@@ -39,8 +39,16 @@ installing component-test
 {{#my-first-component}}{{/my-first-component}}
 ```
 
+或者使用 
+
+```handlebars
+<MyFirstComponent></MyFirstComponent>
+```
+
 
 ## 动态渲染 Component
+
+ember 支持动态渲染 component
 
 ```handlebars
 {{#each model as |post|}}
@@ -51,6 +59,17 @@ installing component-test
 
 当不知道 Component name 名字时，可以动态渲染 Component，其穿参、事件绑定等处理和普通用法是一样的。
 
+或者
+
+```handlebars
+{{#each this.model as |post|}}
+  {{!-- either foo-component or bar-component --}}
+  {{#let (component this.componentName) as |Post|}}
+    <Post @post={{post}} />
+  {{/let}}
+{{/each}}
+```
+
 ## 向 component 传递参数
 
 component 传递参数非常简单，按照参数名字赋值就可以
@@ -59,6 +78,13 @@ component 传递参数非常简单，按照参数名字赋值就可以
 {{blog-post title=post.title body=post.body}}
 ```
 
+或者
+
+```handlebars
+<BlogPost @title={{post.title}} @body={{post.body}}/>
+```
+
+
 It is important to note that these properties stay in sync (technically known as being "bound"). That is, if the value of `componentProperty` changes in the component, `outeroperty` will be updated to reflect that change. The reverse is true as well.
 
 需要注意的是，以这种方式传递的参数其值在组件外和组件内部是同步的，术语叫 bound，也就是说如果组件内部的值发生改变，组件外部的值也会更新，组件外部的值发生改变，内部的值也会发生改变
@@ -66,11 +92,11 @@ It is important to note that these properties stay in sync (technically known as
 **使用占位参数**
 
 ```javascript
-import Ember from 'ember';
+import Component from '@ember/component';
 
-const BlogPostComponent = Ember.Component.extend({});
+const BlogPostComponent = Component.extend({});
 
-BlogPostComponent.reopenClass({
+Component.reopenClass({
   positionalParams: ['title', 'body']
 });
 
