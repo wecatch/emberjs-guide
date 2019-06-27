@@ -39,6 +39,32 @@ Route 会把 model 返回的 value 挂在 controller 的 model 属性上，然�
 
 这两个 hook 来完成在 model 解析前和解析后的工作。
 
+## beforeModel hook
+
+发生在 model hook 调用之前的 hook:
+
+```javascript
+beforeModel(transition){
+  return Any | Promise
+}
+```
+
+可以在这个 hook 中调用 transition 的 abort 或者 retry 完成对 route 的特定处理，也可以使用 `this.transitionTo` 完成跳转。
+
+如果这个hook 返回 promise，route 会等待 promise 解析完成，可以在这个 hook 完成一些异步操作。
+
+## afterModel hook
+
+发生在 model hook 调用之后的 hook:
+
+```javascript
+afterModel(model, transition){
+  return Any | Promise
+}
+```
+
+可以在这个 hook 中根据 model 的内容执行对应的逻辑判断，然后再做跳转处理，如果这个 hook 返回 promise route 会等待直到 promise 解析完成。
+
 ## dynamic model
 
 除了通过 model hook 返回固定的 model，route 还支持通过 URL 来区分不同的 model，称之为 dynamic model，用以区分不同的 model 的 URL 中的参数称之为 dynamic segment。比如有一个列表是 `/photos`  显示图片列表，当用户点击单个图片的时候比如说  `/photos/1` 会使用不同的 model 渲染不同的 template。
