@@ -141,6 +141,15 @@ app.import('vendor/shims/moment.js');
 如果是在 Eember app 中，在 ember-cli-build 中管理
 
 
+## 启用 jquery
+
+```
+ember install @ember/jquery
+ember install @ember/optional-features
+ember feature:enable jquery-integration
+```
+
+
 
 
 
