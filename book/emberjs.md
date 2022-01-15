@@ -1,14 +1,14 @@
-# emberjs
+# 介绍
 
-Emberjs 再不久的将来将逐渐移除 controller，view 这些传统 MVC 中的概念，
-更多地围绕 component 以及 component 与 route，component自身的事件和数据交互来组织架构，
-并引入了 service，从而简化了编程模型，这样的架构有利于清晰地划分模块职责，更容易理解数据流向和事件流向。
+Emberjs 是一个 JavaScript 框架，可以用来构建非常复杂的 web 应用，emberjs 的设计理念是**约定大于配置**，本身具有固定的开发模式以及完备的开发工具，一旦掌握，生成效率奇高。
 
-![emberjs 2.0](img/2.0ar.png)
+## 基础概念和架构
 
-**图片出自:[5-essential-ember-2.0-concepts](http://emberigniter.com/5-essential-ember-2.0-concepts/)**
+![emberjs 2.0](img/essential-1.jpeg)
 
-上图简单描述了 emberjs 中架构和基本概念：
+**图片出自:[5-essential-ember-2.0-concepts](https://emberigniter.com/5-essential-ember-concepts/)**
+
+上图描述了 emberjs 中架构和基本概念：
 
 - router
 - route
@@ -17,32 +17,27 @@ Emberjs 再不久的将来将逐渐移除 controller，view 这些传统 MVC 中
 - service
 - component
 
+### Router
 
-**router**
+router 负责组织 route，并处理 route 之间的层级关系，route 的 manager。
 
-router 负责组织route，并处理 route 之间的层级关系
+### Route
 
-**route**
+route 就是 web 的路由，优秀的 web 应用总是从良好的路由设计开始的。
 
-简单理解就是一个 url
+### Model
 
-**model**
+emebr 中的数据对象，可以是任意的 JavaScript 对象、数组或 promise，ember 提供了 ember-data 来处理所有与数据相关的事情。
 
-在 emberjs 的官方中，model 层是由 ember-data 负责的，
-其实 emberjs 的 model 可以是任意的 emberjs 对象、数组或 promise。由于 ember-data 的复杂性以及对数据的强制规范，wecatch 在实践中都是自己实现 ORM 层，处理简单，数据交互也直观。
+### Service
 
-**service**
+service 是一个单实例 ember 对象，在 emebr 应用中负责全局性的事务处理，比如登录会话信息等。
 
-service 是一个单实例 ember 对象，负责为不同的 ember object 提供服务，简单理解就是一种对象之间的交互和通信手段
+### Component
 
-**component**
+类似 react 和 vuejs 中的 component，完整的包含了渲染 UI 所需要的状态、HTML以及事件交互。
 
-具有数据和事件的 UI 组件
+### Template & Controller
 
-**controller**
+Controller 连接 route 和 template，在对应的 template 中渲染 route 中的 model 数据。
 
-controller 现在的作用负责把连接 route 和 template，不过由于大部分逻辑都可以使用 component 封装，所以 controller 的作用在不断弱化
-
-----------
-
-**本文部分参考[5-essential-ember-2.0-concepts](http://emberigniter.com/5-essential-ember-2.0-concepts/)**
