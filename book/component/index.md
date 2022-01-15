@@ -1,49 +1,75 @@
 # 认识 Component 
 
-Component 是 emberjs 中的重要概念，emberjs 的 Component 和 vuejs 以及 reactjs 等 ui-Component 概念大同小异，并无本质的差别，都是具有独立逻辑可复用的组件单元。
+Component 是 emberjs 中的重要概念，emberjs 的 Component 和 vuejs 以及 reactjs 等 ui-Component 概念大同小异，并无本质的差别，都是具有独立逻辑且可复用的 UI 单元。
 
 ## 定义 Component 
 
-Component 的定义非常简单，只要有一个 `template.hbs`模板就可以定义一个 Component，也就是说当你只需要一个不断重复的模板片段，而没有任何 JavaScript 逻辑时，Component 就能帮上忙。
+在 ember 使用 `ember generate` 命令可以快速定义一种类型，简写为 `ember g`，生成一个组件如下：
 
 ```bash
-± % ember g component my-first-component 
+% ember g component hello 
 installing component
-  create app/components/my-first-component.js
-  create app/templates/components/my-first-component.hbs
+  create app/components/hello.hbs
+  skip app/components/hello.js
+  tip to add a class, run `ember generate component-class hello`
 installing component-test
-  create tests/integration/components/my-first-component-test.js
+  create tests/integration/components/hello-test.js
 
-```
-
-在上面例子中的 my-first-component 即使删除 my-first-component.js 这个 Component 依然有效，需要注意的是，Component 的名字组成**必须要有连接符-**，这是 emberjs 的约定。使用 emberjs 的脚手架创建的 Component hbs 和 js 分别位于不同的文件夹，有时候为了方便管理，可以都放置于 Components 文件夹下面，使用 `--pod`
-
-```
-± % ember g component my-second-component --pod
+% ember g component world
 installing component
-  create app/components/my-second-component/component.js
-  create app/components/my-second-component/template.hbs
+  create app/components/world.hbs
+  skip app/components/world.js
+  tip to add a class, run `ember generate component-class world`
 installing component-test
-  create tests/integration/components/my-second-component/component-test.js
-
+  create tests/integration/components/world-test.js 
 ```
 
-上的例子中创建了第二个 component，它的 js 和 hbs 在同一个文件夹。
+上面的命令将生成两个 hbs 文件：
 
+```bash
+% tree app/components
+app/components
+├── hello.hbs
+└── world.hbs
+```
+
+文件的内容是：
+
+```handlebars
+{{yield}}
+```
+
+我们将其中的内容分别改为：
+
+hello.hbs
+
+```html
+<h3>Hello</h3>
+```
+
+world.hbs
+
+```html
+<h3>world</h3>
+```
 
 ## 使用 Component 
 
-使用 Component 非常简单，像这样
+打开编辑器，在 `application.hbs` 中使用上面的组件
 
-```handlebars
-{{#my-first-component}}{{/my-first-component}}
+```html
+<Hello/> Emberjs <World/>
 ```
 
-或者使用 
+![](./../img/screely-1642250731566.png)
 
-```handlebars
-<MyFirstComponent></MyFirstComponent>
+可以看到组件的使用就如同普通的 html tag 一样，ember 约定 ember 定义的组件是以 `<>` 的形式使用，支持 self closing 形式 `</>`，组件名称风格是 Pascal 命名法，但是组件在以文件名称存在时，如果包含多个单词，则采用连字符 `-`比如，组件 `<HelloWorld/>` 对应的文件名称是：
+
+```bash
+app/components
+├── hello-world.hbs
 ```
+
 
 
 ## 动态渲染 Component

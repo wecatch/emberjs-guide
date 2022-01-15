@@ -1,10 +1,9 @@
 # Summary
 
 * [为什么是 emberjs](book/why-emberjs.md)
-* [introduction](book/emberjs.md)
-    * [构建 ember 应用程序](book/create-app.md)
+* [introduction](book/index.md)
+    * [构建第一个 ember 应用程序](book/create-app.md)
     * [ember app 目录结构介绍](book/app-dir-structure.md)
-    * [Hello world](book/hello-world.md)
 * [组件](book/component/index.md)
     * [自定义 component 模板和内容](book/component/custome-component.md)
     * [自定义 component 的 html 元素和属性](book/component/custome-component-html.md)

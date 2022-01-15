@@ -2,17 +2,36 @@
 
 构建 ember app 使用官方出品的构建工具 [ember-cli](https://cli.emberjs.com/release/)
 
-## 安装 ember-cli
-
 ```bash
 npm install -g ember-cli@3.28
 ```
 
-## 构建第一个 ember 项目
+安装完成之后，创建一个空文件夹 my-app，然后进入执行初始化
 
-ember-cli 安装完成之后，执行 `ember -h` 可以看到所有的 ember 命令，构建项目目录使用
-`ember new ` 命令。执行 `ember new my-emberapp` 之后，ember-cli 会创建一个
-ember app 工程，并且自动安装所有依赖。
+```bash
+mkdir my-app
+cd my-app
+ember init                                             
+```
 
-安装完成之后，进入 `my-emberapp` 目录，执行 `ember server` ，打开浏览器访问 `http://localhost:4200` 将看到 ember app 已经构建成功了
+![](img/ember-init.png)
+
+等待安装完成，然后启动 server
+
+```bash
+ember serve 
+Build successful (13454ms) – Serving on http://localhost:4200/
+
+Slowest Nodes (totalTime >= 5%)                                                           | Total (avg)           
+------------------------------------------------------------------------------------------+-----------------------
+Babel: ember-source (5)                                                                   | 4586ms (917 ms)       
+Babel: @ember/test-helpers (1)                                                            | 2162ms                
+BroccoliRollup (6)                                                                        | 988ms (164 ms)        
+Bundler (1)                                                                               | 881ms      
+
+```
+
+打开浏览器访问 http://localhost:4200/
+
+![](img/screely-1642248775120.png)
 
