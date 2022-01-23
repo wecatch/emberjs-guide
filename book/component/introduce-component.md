@@ -1,4 +1,4 @@
-# 引入 Component 重构 html
+# 引入 Component 重构 HTML
 
 上文中 html 内容全部在 `application.hbs` 中，这种实现方式显然不够优雅，代码的可复用性、可维护性都不好，可以利用 component 的复用能力，把 html 内容进行封装的独立使用，因此我们第一步就是要对 html 内容进行拆解，形成可复用的单元
 
