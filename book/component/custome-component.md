@@ -1,71 +1,123 @@
-# 自定义 component 模板和内容
+# 更灵活的控制 Component 的渲染：Block content
 
-传递参数向 component 可以提供 component 模板渲染的所需要的内容，如果想自定义 component 的模板，可以使用 `block form`，即在模板中使用 `{{yield}}` 表达式。 
+如果想自定义 component 的模板，可以使用 `block form`，即在模板中使用 `{{yield}}` 表达式, yield 的含义是在 tempalte 中提供一个 placeholder 让用户可以自定义 template 的内容
+
+`app/components/message.hbs`
+```html
+<Message::Avatar
+  @title={{@avatarTitle}}
+  @initial={{@avatarInitial}}
+  @isActive={{@userIsActive}}
+  class="{{if @isCurrentUser "current-user"}}"
+/>
+<section>
+  <Message::Username
+    @name={{@username}}
+    @localTime={{@userLocalTime}}
+  />
+
+  {{yield}}
+</section>
+```
+
+
+`app/components/received-message.hbs`
+```html
+
+<Message
+  @username="Tomster"
+  @userIsActive={{true}}
+  @userLocalTime="4:56pm"
+
+  @avatarTitle="Tomster's avatar"
+  @avatarInitial="T"
+>
+  <p>
+    Hey Zoey, have you had a chance to look at the EmberConf
+    brainstorming doc I sent you?
+  </p>
+</Message>
+```
+
+
+其中received-message.hbs 部分:
+```
+<p>
+    Hey Zoey, have you had a chance to look at the EmberConf
+    brainstorming doc I sent you?
+  </p>
+```
+将会替代 message yield 出现的地方。这个例子中 message 提供了用户自定义 message 内容主体的能力
+
+##  条件 Block content
+
+`has-block` 可以用来判断 component 是否有 block
+
+```html
+<dialog>
+  {{#if (has-block)}}
+    {{yield}}
+  {{else}}
+    An unknown error occurred!
+  {{/if}}
+</dialog>
+```
+如果有自定义内容就显示内容，否则显示默认的内容。
+
+
+## Block 参数
+
+
+`yield` 除了可以作为占位符之外，还提供把 template 的内容主动传递到 component 外部使用的能力
+
+```
+
+<h1>{{@post.title}}</h1>
+<h2>{{@post.author}}</h2>
+
+{{yield @post.body}}
+```
+
+```
+<BlogPost @post={{@blogPost}} as |postBody|>
+  <img alt="" role="presentation" src="./blog-logo.png">
+
+  {{postBody}}
+
+  <AuthorBio @author={{@blogPost.author}} />
+</BlogPost>
+
+```
+
+
+传递多个参数
+
+```
+
+{{yield @post.title @post.author @post.body }}
+
+```
 
 
 ```html
-# app/templates/components/blog-post.hbs
-<h1>{{title}}</h1>f
-<div class="body">{{yield}}</div>
+<BlogPost @post={{@blogPost}} as |postTitle postAuthor postBody|>
+  <img alt="" role="presentation" src="./blog-logo.png">
 
-# app/templates/index.hbs
-{{#blog-post title=title}}
-  <p class="author">by {{author}}</p>
-  {{body}}
-{{/blog-post}}
+  {{postTitle}}
 
-```
+  {{postBody}}
 
-其中模板内部的部分` <p class="author">by {{author}}</p>  {{body}}` 将会替代 yield 出现的地方。
-
-## 返回 component 内部的内容
-
-使用 yield 可以把组件内部的内容传递到组件外部供外部使用。
-
-```handlebars
-# app/templates/components/blog-post.hbs
-<h2>{{title}}</h2>
-<div class="body">{{yield (hash body=(component editStyle postData=postData))}}</div>
+  <AuthorBio @author={{postAuthor}} />
+</BlogPost>
 
 ```
 
-此种场景之下，blog-post 根据组件外部传来的 editStyle 动态选择对应的组件进行渲染，然后通过 hash 的方式 wrap 组件内部的值，并且通过 yield 返回到外部，外部可以通过 as 的方式拿到组件内部的返回的值
-
-
-```handlebars
-{{#blog-post editStyle="markdown-style" postData=myText as |post|}}
-  <p class="author">by {{author}}</p>
-  {{post.body}}
-{{/blog-post}}
-```
-
-`as |post|` 对应的是组件内部的 `（hash body=(component editStyle postData=postData))`，
-
-
-### yield 获取值得顺序
-
-通过 yield 在组件外部可以获取组件内部 yield 的值时，值得获取是按照 yield 的顺序组成的。
-
-
-```handlebars
-# app/templates/components/blog-post.hbs
-{{yield post.title post.body post.author}}
-```
-
-
-```handlebars
-# app/templates/index.hbs
-{{#blog-post post=model as |title body author|}}
-  <h2>{{title}}</h2>
-  <p class="author">by {{author}}</p>
-  <div class="post-body">{{body}}</p>
-{{/blog-post}}
-```
 
 如果在某些场合 component 不需要 yield，可以使用 `hasBlock` 判断当前组件的使用是否是以 `block form` 的使用
 
+`app/templates/components/blog-post.hbs`
+
 ```handlebars
-app/templates/components/blog-post.hbs
 {{#if hasBlock}}
   {{yield post.title}}
   {{yield post.body}}
