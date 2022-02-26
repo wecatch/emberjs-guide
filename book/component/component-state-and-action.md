@@ -25,8 +25,8 @@ export default class CounterComponent extends Component {
 
 上述例子中的 `count` 中具有了 autotrack 的能力，当 autotrack 值发生改变时，对应 template 中的值也会发生变化，比如 count 的值发生改变时，template 中的值也会发生改变
 
-
 `app/components/counter.hbs` 
+
 ```html
 
 <p>{{this.count}}</p>
@@ -81,7 +81,7 @@ export default class CounterComponent extends Component {
 
 而 action 就是很普通的用 `action` 装饰的 JavaScript 方法。
 
-
+![](./../img/button-inc.gif)
 
 ## 为 action 提供参数
 
@@ -108,15 +108,14 @@ export default class CounterComponent extends Component {
 
 ```
 
-
 `app/components/counter.hbs`
-```html
 
+```html
+<p>{{this.count}}</p>
 <button type="button" {{on "click" (fn this.change 1)}}>+1</button>
 <button type="button" {{on "click" (fn this.change -1)}}>-1</button>
 
 ```
-
 
 **fn 的含义就是把参数和 action 重新再包装成一个函数来使用**
 
@@ -126,8 +125,8 @@ export default class CounterComponent extends Component {
 
 Computed value 是 ember 提供的一种以声明式编程的方式动态计算属性的能力，通过这种能力，如果某个 state 的改变要依赖其他 state，只要被依赖的 state 具有 autotrack 能力，那么该 state 也会在被依赖的 state 发生变化时而发生变化，下面的例子中，total 这个属性依赖 count 和 multiple，通过 get 来实现根据 count 和 multiple 的依赖计算 total
 
- 
 `app/components/counter.js` 
+
 ```javascript
 
 import Component from '@glimmer/component';
@@ -159,6 +158,22 @@ export default class CounterComponent extends Component {
  
 
 ```
+
+
+
+
+
+`app/components/counter.hbs`
+
+```html
+<p>{{this.count}}</p>
+<p>{{this.total}}</p>
+<button type="button" {{on "click" (fn this.change 1)}}>+1</button>
+<button type="button" {{on "click" (fn this.change -1)}}>-1</button>
+<button type="button" {{on "click" double}}>double</button>
+
+```
+
 
 
 ## 在 JavaScript 中使用 component arguments
@@ -216,5 +231,4 @@ export default class CounterComponent extends Component {
 }
 
 ````
-
 
