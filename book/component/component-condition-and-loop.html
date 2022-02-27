@@ -1,0 +1,761 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-cn" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Component 实现逻辑判断和循环 · Emberjs Guide</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="三月沙">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-toc/page-toc.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="custome-component.html" />
+    
+    
+    <link rel="prev" href="component-state-and-action.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="輸入並搜尋" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../why-emberjs.html">
+            
+                <a href="../why-emberjs.html">
+            
+                    
+                    为什么是 emberjs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    introduction
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../create-app.html">
+            
+                <a href="../create-app.html">
+            
+                    
+                    构建第一个 ember 应用程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../app-dir-structure.html">
+            
+                <a href="../app-dir-structure.html">
+            
+                    
+                    ember app 目录结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    认识 Component
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="template-is-html.html">
+            
+                <a href="template-is-html.html">
+            
+                    
+                    认识 Template
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="introduce-component.html">
+            
+                <a href="introduce-component.html">
+            
+                    
+                    引入 Component 重构 HTML
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="component-arguments-html-attributes.html">
+            
+                <a href="component-arguments-html-attributes.html">
+            
+                    
+                    Component 的参数和 HTML 属性 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="component-state-and-action.html">
+            
+                <a href="component-state-and-action.html">
+            
+                    
+                    Component 的状态和事件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.5" data-path="component-condition-and-loop.html">
+            
+                <a href="component-condition-and-loop.html">
+            
+                    
+                    Component 实现逻辑判断和循环
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="custome-component.html">
+            
+                <a href="custome-component.html">
+            
+                    
+                    更灵活的控制 Component 的渲染：Block content
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="component-life-circle.html">
+            
+                <a href="component-life-circle.html">
+            
+                    
+                    Component 的生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="action.html">
+            
+                <a href="action.html">
+            
+                    
+                    Component 的事件处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="QA.html">
+            
+                <a href="QA.html">
+            
+                    
+                    QA
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../route/">
+            
+                <a href="../route/">
+            
+                    
+                    路由
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../route/model.html">
+            
+                <a href="../route/model.html">
+            
+                    
+                     model hook
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../route/query-params.html">
+            
+                <a href="../route/query-params.html">
+            
+                    
+                    query parameter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../route/route-loading-error.html">
+            
+                <a href="../route/route-loading-error.html">
+            
+                    
+                    loading 和 error
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../route/404.html">
+            
+                <a href="../route/404.html">
+            
+                    
+                    404 的实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../route/redirect.html">
+            
+                <a href="../route/redirect.html">
+            
+                    
+                    重定向
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../route/template.html">
+            
+                <a href="../route/template.html">
+            
+                    
+                    模板渲染
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../template/">
+            
+                <a href="../template/">
+            
+                    
+                    模板
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../template/link-to.html">
+            
+                <a href="../template/link-to.html">
+            
+                    
+                    URL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../template/input.html">
+            
+                <a href="../template/input.html">
+            
+                    
+                    表单
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../template/helper-index.html">
+            
+                <a href="../template/helper-index.html">
+            
+                    
+                    内建 helper 一览表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../template/dev-helper.html">
+            
+                <a href="../template/dev-helper.html">
+            
+                    
+                    开发 helper
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../controller/controller.html">
+            
+                <a href="../controller/controller.html">
+            
+                    
+                    控制器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../cli/">
+            
+                <a href="../cli/">
+            
+                    
+                    Ember-cli
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../action.html">
+            
+                <a href="../action.html">
+            
+                    
+                    event 和 action
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../QA.html">
+            
+                <a href="../QA.html">
+            
+                    
+                    QA
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本書使用 GitBook 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Component 实现逻辑判断和循环</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="component-&#x5B9E;&#x73B0;&#x903B;&#x8F91;&#x5224;&#x65AD;&#x548C;&#x5FAA;&#x73AF;">Component &#x5B9E;&#x73B0;&#x903B;&#x8F91;&#x5224;&#x65AD;&#x548C;&#x5FAA;&#x73AF;</h1>
+<p>&#x5728; template &#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>if</code> &#x8FDB;&#x884C;&#x6761;&#x4EF6;&#x5224;&#x65AD;&#xFF0C;ember &#x63D0;&#x4F9B;&#x7684;&#x6761;&#x4EF6;&#x5224;&#x65AD;&#x5305;&#x62EC;&#x4E24;&#x79CD;&#x5F62;&#x5F0F;&#xFF1A;block&#xFF08;&#x5757;&#x72B6;&#xFF09; &#x548C; inline&#xFF08;&#x5185;&#x8054;&#xFF09;&#xFF1A;</p>
+<pre><code class="lang-html">{{#if this.thingIsTrue}}
+  Content for the block form of &quot;if&quot;
+{{/if}}
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">{{if</span> <span class="hljs-attr">this.thingIsTrue</span> &quot;<span class="hljs-attr">value-if-true</span>&quot; &quot;<span class="hljs-attr">value-if-false</span>&quot;}}&gt;</span>
+  This div used the inline &quot;if&quot; to calculate the class to use.
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<h2 id="block-if">Block if</h2>
+<p>Block &#x6761;&#x4EF6;&#x5224;&#x65AD;&#x6B63;&#x5982;&#x5B57;&#x9762;&#x610F;&#x601D;&#x63D0;&#x4F9B;&#x7684;&#x662F;&#x57FA;&#x4E8E;&#x5757;&#x72B6;&#x7684;&#x903B;&#x8F91;&#x5224;&#x65AD;&#xFF0C;&#x7C7B;&#x4F3C; HTML &#x4E2D;&#x7684; block &#x5143;&#x7D20;:</p>
+<pre><code class="lang-html">{{#if condition}}
+  {{!-- some content --}}
+{{/if}}
+</code></pre>
+<p>&#x5E76;&#x4E14; block condition &#x652F;&#x6301; <code>else</code>:</p>
+<pre><code class="lang-html">{{#if condition}}
+  {{!-- some content --}}
+{{else}}
+  {{!-- some other content --}}
+{{/if}}
+
+{{#if condition1}}
+  ...
+{{else if condition2}}
+  ...
+{{else if condition3}}
+  ...
+{{else}}
+  ...
+{{/if}}
+</code></pre>
+<h2 id="inline-if">Inline if</h2>
+<p>Inline &#x6761;&#x4EF6;&#x5224;&#x65AD;&#x53EF;&#x4EE5;&#x5728;&#x4E00;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#x4E2D;&#x5B8C;&#x6210;&#x903B;&#x8F91;&#x5224;&#x65AD;:</p>
+<pre><code class="lang-html">{{if condition value}}
+</code></pre>
+<p>&#x540C;&#x6837; inline &#x4E5F;&#x652F;&#x6301; else:</p>
+<pre><code class="lang-html">{{if condition value1 value2}}
+</code></pre>
+<p>Inline &#x7684;&#x65B9;&#x5F0F;&#x7ECF;&#x5E38;&#x7528;&#x4E8E;&#x5BF9; HTML class &#x7684;&#x5224;&#x65AD;&#x4E2D;&#xFF0C;&#x6BD4;&#x5982;&#x6839;&#x636E;&#x7528;&#x6237;&#x662F;&#x5426;&#x767B;&#x9646;&#x800C;&#x8D4B;&#x4E88;&#x4E0D;&#x540C;&#x7684; class:</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">aside</span> <span class="hljs-attr">...attributes</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>
+    <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;avatar {{if @isActive &quot;</span><span class="hljs-string">is-active&quot;}}&quot;</span>
+    <span class="hljs-attr">title</span>=<span class="hljs-string">{{@title}}</span>
+  &gt;</span>
+    {{@initial}}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>
+</code></pre>
+<h2 id="template-&#x4E2D;&#x7684;&#x5FAA;&#x73AF;">Template &#x4E2D;&#x7684;&#x5FAA;&#x73AF;</h2>
+<p>&#x5FAA;&#x73AF;&#x4F7F;&#x7528; <code>each</code> &#x5B8C;&#x6210;&#xFF0C;<code>each</code> &#x548C; <code>if</code> &#x4E00;&#x6837;&#xFF0C;&#x5728; ember &#x4E2D;&#x90FD;&#x79F0;&#x4E4B;&#x4E3A; <code>helper</code>&#xFF0C;&#x662F; ember &#x652F;&#x6301;&#x7684;&#x5728; template &#x4E2D;&#x5B9E;&#x73B0; JavaScript &#x903B;&#x8F91;&#x7684;&#x4E00;&#x79CD;&#x80FD;&#x529B;
+&#xFF1A;</p>
+<pre><code class="lang-html">  {{#each this.messages as |message|}}
+    <span class="hljs-tag">&lt;<span class="hljs-name">Message</span>
+      @<span class="hljs-attr">username</span>=<span class="hljs-string">{{message.username}}</span>
+      @<span class="hljs-attr">userIsActive</span>=<span class="hljs-string">{{message.active}}</span>
+      @<span class="hljs-attr">userLocaltime</span>=<span class="hljs-string">{{message.localTime}}</span>
+    &gt;</span>
+      {{{message.content}}}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Message</span>&gt;</span>
+  {{/each}}
+</code></pre>
+<p>&#x5982;&#x679C;&#x5FAA;&#x73AF;&#x5BF9;&#x8C61; <code>this.messages</code> &#x53D1;&#x751F;&#x4E86;&#x53D8;&#x66F4;&#xFF0C;template &#x4F1A;&#x81EA;&#x52A8;&#x8FDB;&#x884C;&#x6E32;&#x67D3;&#xFF0C;<code>each</code> &#x8FD8;&#x652F;&#x6301; index &#x4EE5;&#x53CA; <code>else</code></p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+  {{#each this.queue as |person index|}}
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Hello, {{person.name}}! You&apos;re number {{index}} in line<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  {{/each}}
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+  {{#each this.queue as |person index|}}
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Hello, {{person.name}}! You&apos;re number {{index}} in line<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  {{else}}
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Empty list<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  {{/each}}
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</code></pre>
+<p>&#x7C7B;&#x4F3C; javascript &#x4E2D;&#x7684; for..in &#x8BED;&#x53E5;&#xFF0C;<code>each-in</code> &#x63D0;&#x4F9B;&#x5BF9; object &#x8FDB;&#x884C;&#x8FED;&#x4EE3;&#x7684;&#x80FD;&#x529B;&#xFF1A;</p>
+<pre><code class="lang-js">
+<span class="hljs-keyword">const</span> categories = {
+    <span class="hljs-string">&apos;Bourbons&apos;</span>: [<span class="hljs-string">&apos;Bulleit&apos;</span>, <span class="hljs-string">&apos;Four Roses&apos;</span>, <span class="hljs-string">&apos;Woodford Reserve&apos;</span>],
+    <span class="hljs-string">&apos;Ryes&apos;</span>: [<span class="hljs-string">&apos;WhistlePig&apos;</span>, <span class="hljs-string">&apos;High West&apos;</span>]}
+</code></pre>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+  {{#each-in this.categories as |category products|}}
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>{{category}}
+      <span class="hljs-tag">&lt;<span class="hljs-name">ol</span>&gt;</span>
+        {{#each products as |product|}}
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>{{product}}<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        {{/each}}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  {{/each-in}}
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</code></pre>
+<footer class="page-footer"><span class="copyright">&#xA9; &#x4E09;&#x6708;&#x6C99; all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Updated at
+2022-02-27 14:35:12
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="component-state-and-action.html" class="navigation navigation-prev " aria-label="Previous page: Component 的状态和事件">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="custome-component.html" class="navigation navigation-next " aria-label="Next page: 更灵活的控制 Component 的渲染：Block content">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Component 实现逻辑判断和循环","level":"1.4.5","depth":2,"next":{"title":"更灵活的控制 Component 的渲染：Block content","level":"1.4.6","depth":2,"path":"book/component/custome-component.md","ref":"book/component/custome-component.md","articles":[]},"previous":{"title":"Component 的状态和事件","level":"1.4.4","depth":2,"path":"book/component/component-state-and-action.md","ref":"book/component/component-state-and-action.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mermaid","github","editlink","page-toc","-lunr","-search","search-plus","tbfed-pagefooter","ga"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&copy 三月沙","modify_label":"Updated at","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/wecatch/emberjs-guide"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/wecatch/emberjs-guide/blob/master"},"mermaid":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3","showByDefault":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-79591400-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"三月沙","pdf":{"pageNumbers":true,"fontSize":11,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"toc":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Emberjs Guide","language":"zh-cn","gitbook":">= 3.2.2"},"file":{"path":"book/component/component-condition-and-loop.md","mtime":"2022-02-27T06:35:12.054Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-27T06:53:36.400Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-editlink/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-page-toc/anchor-3.1.1.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-page-toc/page-toc.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

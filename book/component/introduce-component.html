@@ -1,0 +1,776 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-cn" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>引入 Component 重构 HTML · Emberjs Guide</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="三月沙">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-toc/page-toc.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="component-arguments-html-attributes.html" />
+    
+    
+    <link rel="prev" href="template-is-html.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="輸入並搜尋" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../why-emberjs.html">
+            
+                <a href="../why-emberjs.html">
+            
+                    
+                    为什么是 emberjs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    introduction
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../create-app.html">
+            
+                <a href="../create-app.html">
+            
+                    
+                    构建第一个 ember 应用程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../app-dir-structure.html">
+            
+                <a href="../app-dir-structure.html">
+            
+                    
+                    ember app 目录结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    认识 Component
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="template-is-html.html">
+            
+                <a href="template-is-html.html">
+            
+                    
+                    认识 Template
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.2" data-path="introduce-component.html">
+            
+                <a href="introduce-component.html">
+            
+                    
+                    引入 Component 重构 HTML
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="component-arguments-html-attributes.html">
+            
+                <a href="component-arguments-html-attributes.html">
+            
+                    
+                    Component 的参数和 HTML 属性 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="component-state-and-action.html">
+            
+                <a href="component-state-and-action.html">
+            
+                    
+                    Component 的状态和事件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="component-condition-and-loop.html">
+            
+                <a href="component-condition-and-loop.html">
+            
+                    
+                    Component 实现逻辑判断和循环
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="custome-component.html">
+            
+                <a href="custome-component.html">
+            
+                    
+                    更灵活的控制 Component 的渲染：Block content
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="component-life-circle.html">
+            
+                <a href="component-life-circle.html">
+            
+                    
+                    Component 的生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="action.html">
+            
+                <a href="action.html">
+            
+                    
+                    Component 的事件处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="QA.html">
+            
+                <a href="QA.html">
+            
+                    
+                    QA
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../route/">
+            
+                <a href="../route/">
+            
+                    
+                    路由
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../route/model.html">
+            
+                <a href="../route/model.html">
+            
+                    
+                     model hook
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../route/query-params.html">
+            
+                <a href="../route/query-params.html">
+            
+                    
+                    query parameter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../route/route-loading-error.html">
+            
+                <a href="../route/route-loading-error.html">
+            
+                    
+                    loading 和 error
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../route/404.html">
+            
+                <a href="../route/404.html">
+            
+                    
+                    404 的实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../route/redirect.html">
+            
+                <a href="../route/redirect.html">
+            
+                    
+                    重定向
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../route/template.html">
+            
+                <a href="../route/template.html">
+            
+                    
+                    模板渲染
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../template/">
+            
+                <a href="../template/">
+            
+                    
+                    模板
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../template/link-to.html">
+            
+                <a href="../template/link-to.html">
+            
+                    
+                    URL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../template/input.html">
+            
+                <a href="../template/input.html">
+            
+                    
+                    表单
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../template/helper-index.html">
+            
+                <a href="../template/helper-index.html">
+            
+                    
+                    内建 helper 一览表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../template/dev-helper.html">
+            
+                <a href="../template/dev-helper.html">
+            
+                    
+                    开发 helper
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../controller/controller.html">
+            
+                <a href="../controller/controller.html">
+            
+                    
+                    控制器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../cli/">
+            
+                <a href="../cli/">
+            
+                    
+                    Ember-cli
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../action.html">
+            
+                <a href="../action.html">
+            
+                    
+                    event 和 action
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../QA.html">
+            
+                <a href="../QA.html">
+            
+                    
+                    QA
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本書使用 GitBook 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >引入 Component 重构 HTML</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x5F15;&#x5165;-component-&#x91CD;&#x6784;-html">&#x5F15;&#x5165; Component &#x91CD;&#x6784; HTML</h1>
+<p>&#x4E0A;&#x6587;&#x4E2D; html &#x5185;&#x5BB9;&#x5168;&#x90E8;&#x5728; <code>application.hbs</code> &#x4E2D;&#xFF0C;&#x8FD9;&#x79CD;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#x663E;&#x7136;&#x4E0D;&#x591F;&#x4F18;&#x96C5;&#xFF0C;&#x4EE3;&#x7801;&#x7684;&#x53EF;&#x590D;&#x7528;&#x6027;&#x3001;&#x53EF;&#x7EF4;&#x62A4;&#x6027;&#x90FD;&#x4E0D;&#x597D;&#xFF0C;&#x53EF;&#x4EE5;&#x5229;&#x7528; component &#x7684;&#x590D;&#x7528;&#x80FD;&#x529B;&#xFF0C;&#x628A; html &#x5185;&#x5BB9;&#x8FDB;&#x884C;&#x5C01;&#x88C5;&#x7684;&#x72EC;&#x7ACB;&#x4F7F;&#x7528;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x7B2C;&#x4E00;&#x6B65;&#x5C31;&#x662F;&#x8981;&#x5BF9; html &#x5185;&#x5BB9;&#x8FDB;&#x884C;&#x62C6;&#x89E3;&#xFF0C;&#x5F62;&#x6210;&#x53EF;&#x590D;&#x7528;&#x7684;&#x5355;&#x5143;</p>
+<p>&#x7ECF;&#x8FC7;&#x62C6;&#x89E3;&#x6211;&#x4EEC;&#x7684; UI &#x90E8;&#x5206;&#x53EF;&#x4EE5;&#x7531;&#x4EE5;&#x4E0B;&#x51E0;&#x90E8;&#x5206;&#x7EC4;&#x6210;</p>
+<p><img src="../img/messaging-app-2.png" alt=""></p>
+<p>&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x751F;&#x6210;&#x4E09;&#x4E2A;&#x7EC4;&#x4EF6;</p>
+<pre><code class="lang-bash">ember g component received-message
+ember g component sent-message
+ember g component input-message
+</code></pre>
+<p><code>app/components/received-message.hbs</code></p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">aside</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;avatar is-active&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Tomster&apos;s avatar&quot;</span>&gt;</span>T<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h4</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;username&quot;</span>&gt;</span>
+      Tomster
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;local-time&quot;</span>&gt;</span>their local time is 4:56pm<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+      Hey Zoey, have you had a chance to look at the EmberConf brainstorming doc
+      I sent you?
+    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+</code></pre>
+<p><code>app/components/sent-message.hbs</code></p>
+<pre><code class="lang-html">
+  <span class="hljs-tag">&lt;<span class="hljs-name">aside</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;current-user&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;avatar&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Zoey&apos;s avatar&quot;</span>&gt;</span>Z<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h4</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;username&quot;</span>&gt;</span>Zoey<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Hey!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+      I love the ideas! I&apos;m really excited about where this year&apos;s EmberConf is
+      going, I&apos;m sure it&apos;s going to be the best one yet. Some quick notes:
+    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        Definitely agree that we should double the coffee budget this year (it
+        really is impressive how much we go through!)
+      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        A blimp would definitely make the venue very easy to find, but I think
+        it might be a bit out of our budget. Maybe we could rent some spotlights
+        instead?
+      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+        We absolutely will need more hamster wheels, last year&apos;s line was
+        <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>way<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span> too long. Will get on that now before rental season hits
+        its peak.
+      <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Let me know when you&apos;ve nailed down the dates!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+</code></pre>
+<p><code>app/components/input-message.hbs</code></p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;message&quot;</span>&gt;</span>Message<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;message&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>
+      Send
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</code></pre>
+<p>&#x5728; <code>application.hbs</code> &#x4E2D;&#x4F7F;&#x7528;&#x7EC4;&#x4EF6;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;messages&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">ReceivedMessage</span>/&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">SentMessage</span>/&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">InputMessage</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<h2 id="&#x5D4C;&#x5957;&#x7EC4;&#x4EF6;">&#x5D4C;&#x5957;&#x7EC4;&#x4EF6;</h2>
+<p>&#x4E3A;&#x4E86;&#x8BA9; UI &#x8FBE;&#x5230;&#x66F4;&#x597D;&#x7684;&#x590D;&#x7528;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x5BF9;&#x4E0A;&#x6587;&#x4E2D;&#x7684;&#x7EC4;&#x4EF6;&#x8FDB;&#x884C;&#x62C6;&#x5206;&#xFF0C;&#x5F62;&#x6210;&#x66F4;&#x7EC6;&#x7C92;&#x5EA6;&#x7684;&#x7EC4;&#x4EF6;&#xFF0C;&#x6BD4;&#x5982;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x62C6;&#x5206;&#x51FA; SendMessage &#x7684; UserName &#x4EE5;&#x53CA; ReceivedMessage &#x7684; UserName</p>
+<pre><code class="lang-bash">ember g component received-message/user-name
+ember g component sent-message/user-name
+</code></pre>
+<p>&#x5728; ember &#x4E2D;&#x50CF; user-name &#x8FD9;&#x79CD;&#x5D4C;&#x5957;&#x5B9A;&#x4E49;&#x5728;&#x7236;&#x7EC4;&#x4EF6;&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x7EC4;&#x4EF6;&#x79F0;&#x4E4B;&#x4E3A;<strong>&#x5D4C;&#x5957;&#x7EC4;&#x4EF6;</strong>&#xFF0C;&#x8C03;&#x7528;&#x65F6;&#x7236;&#x7EC4;&#x4EF6;&#x540E;&#x8DDF;<code>::</code>&#x7136;&#x540E;&#x518D;&#x8DDF;&#x7EC4;&#x4EF6;&#x540D;&#x79F0;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">SentMessage::UserName</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ReceivedMessage::UserName</span>/&gt;</span>
+</code></pre>
+<p>&#x540C;&#x7406;&#x4E5F;&#x53EF;&#x4EE5;&#x5BF9; avatar &#x90E8;&#x5206;&#x7684; html &#x8FDB;&#x884C;&#x76F8;&#x540C;&#x62C6;&#x5206;</p>
+<pre><code class="lang-bash">ember g component received-message/avatar
+ember g component sent-message/avatar
+</code></pre>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">ReceivedMessage::Avatar</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">SentMessage::Avatar</span>/&gt;</span>
+</code></pre>
+<p>ember &#x652F;&#x6301;<strong>&#x591A;&#x5C42;&#x5D4C;&#x5957;</strong>&#xFF0C;&#x800C;&#x4E14; ember &#x652F;&#x6301;&#x4E3A;&#x7EC4;&#x4EF6;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;<code>index.hbs</code> &#x4E14;&#x5728;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x4E0D;&#x9700;&#x8981;&#x6DFB;&#x52A0; <code>::Index</code> &#xFF0C;&#x56E0;&#x800C; <code>app/components/received-message.hbs</code> &#x53EF;&#x4EE5;&#x66FF;&#x6362;&#x4E3A; <code>app/components/received-message/index.hbs</code></p>
+<pre><code class="lang-bash">mv app/components/received-message.hbs app/components/received-message/index.hbs 
+mv app/components/sent-message.hbs app/components/sent-message/index.hbs
+</code></pre>
+<pre><code class="lang-bash">app/
+  components/
+    -received-message.hbs
+    received-message/
+      +index.hbs
+      avatar.hbs
+      username.hbs
+</code></pre>
+<p>&#x4F7F;&#x7528;&#x4FDD;&#x6301;&#x65B9;&#x5F0F;&#x4E0D;&#x53D8;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;messages&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">ReceivedMessage</span>/&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">SentMessage</span>/&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">InputMessage</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<footer class="page-footer"><span class="copyright">&#xA9; &#x4E09;&#x6708;&#x6C99; all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Updated at
+2022-02-26 12:02:31
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="template-is-html.html" class="navigation navigation-prev " aria-label="Previous page: 认识 Template">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="component-arguments-html-attributes.html" class="navigation navigation-next " aria-label="Next page: Component 的参数和 HTML 属性 ">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"引入 Component 重构 HTML","level":"1.4.2","depth":2,"next":{"title":"Component 的参数和 HTML 属性 ","level":"1.4.3","depth":2,"path":"book/component/component-arguments-html-attributes.md","ref":"book/component/component-arguments-html-attributes.md","articles":[]},"previous":{"title":"认识 Template","level":"1.4.1","depth":2,"path":"book/component/template-is-html.md","ref":"book/component/template-is-html.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mermaid","github","editlink","page-toc","-lunr","-search","search-plus","tbfed-pagefooter","ga"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&copy 三月沙","modify_label":"Updated at","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/wecatch/emberjs-guide"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/wecatch/emberjs-guide/blob/master"},"mermaid":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3","showByDefault":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-79591400-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"三月沙","pdf":{"pageNumbers":true,"fontSize":11,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"toc":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Emberjs Guide","language":"zh-cn","gitbook":">= 3.2.2"},"file":{"path":"book/component/introduce-component.md","mtime":"2022-02-26T04:02:31.480Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-27T06:53:36.400Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-editlink/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-page-toc/anchor-3.1.1.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-page-toc/page-toc.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

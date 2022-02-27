@@ -1,0 +1,730 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-cn" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Ember-cli · Emberjs Guide</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="三月沙">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-toc/page-toc.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../action.html" />
+    
+    
+    <link rel="prev" href="../controller/controller.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="輸入並搜尋" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../why-emberjs.html">
+            
+                <a href="../why-emberjs.html">
+            
+                    
+                    为什么是 emberjs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    introduction
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../create-app.html">
+            
+                <a href="../create-app.html">
+            
+                    
+                    构建第一个 ember 应用程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../app-dir-structure.html">
+            
+                <a href="../app-dir-structure.html">
+            
+                    
+                    ember app 目录结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../component/">
+            
+                <a href="../component/">
+            
+                    
+                    认识 Component
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../component/template-is-html.html">
+            
+                <a href="../component/template-is-html.html">
+            
+                    
+                    认识 Template
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../component/introduce-component.html">
+            
+                <a href="../component/introduce-component.html">
+            
+                    
+                    引入 Component 重构 HTML
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../component/component-arguments-html-attributes.html">
+            
+                <a href="../component/component-arguments-html-attributes.html">
+            
+                    
+                    Component 的参数和 HTML 属性 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../component/component-state-and-action.html">
+            
+                <a href="../component/component-state-and-action.html">
+            
+                    
+                    Component 的状态和事件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../component/component-condition-and-loop.html">
+            
+                <a href="../component/component-condition-and-loop.html">
+            
+                    
+                    Component 实现逻辑判断和循环
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../component/custome-component.html">
+            
+                <a href="../component/custome-component.html">
+            
+                    
+                    更灵活的控制 Component 的渲染：Block content
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../component/component-life-circle.html">
+            
+                <a href="../component/component-life-circle.html">
+            
+                    
+                    Component 的生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../component/action.html">
+            
+                <a href="../component/action.html">
+            
+                    
+                    Component 的事件处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../component/QA.html">
+            
+                <a href="../component/QA.html">
+            
+                    
+                    QA
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../route/">
+            
+                <a href="../route/">
+            
+                    
+                    路由
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../route/model.html">
+            
+                <a href="../route/model.html">
+            
+                    
+                     model hook
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../route/query-params.html">
+            
+                <a href="../route/query-params.html">
+            
+                    
+                    query parameter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../route/route-loading-error.html">
+            
+                <a href="../route/route-loading-error.html">
+            
+                    
+                    loading 和 error
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../route/404.html">
+            
+                <a href="../route/404.html">
+            
+                    
+                    404 的实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../route/redirect.html">
+            
+                <a href="../route/redirect.html">
+            
+                    
+                    重定向
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../route/template.html">
+            
+                <a href="../route/template.html">
+            
+                    
+                    模板渲染
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../template/">
+            
+                <a href="../template/">
+            
+                    
+                    模板
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../template/link-to.html">
+            
+                <a href="../template/link-to.html">
+            
+                    
+                    URL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../template/input.html">
+            
+                <a href="../template/input.html">
+            
+                    
+                    表单
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../template/helper-index.html">
+            
+                <a href="../template/helper-index.html">
+            
+                    
+                    内建 helper 一览表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../template/dev-helper.html">
+            
+                <a href="../template/dev-helper.html">
+            
+                    
+                    开发 helper
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../controller/controller.html">
+            
+                <a href="../controller/controller.html">
+            
+                    
+                    控制器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.8" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Ember-cli
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../action.html">
+            
+                <a href="../action.html">
+            
+                    
+                    event 和 action
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../QA.html">
+            
+                <a href="../QA.html">
+            
+                    
+                    QA
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本書使用 GitBook 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Ember-cli</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="ember-cli">ember-cli</h1>
+<p>ember-cli &#x63D0;&#x4F9B;&#x521B;&#x5EFA; ember app &#x7684;&#x5168;&#x5957;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#xFF0C;&#x4E00;&#x952E;&#x521D;&#x59CB;&#x5316;&#x5DE5;&#x7A0B;&#x3001;&#x6D4B;&#x8BD5;&#x3001;&#x6253;&#x5305;&#x3001;&#x53D1;&#x5E03;&#x3002;ember-cli &#x7684;&#x8BE6;&#x7EC6;&#x4F7F;&#x7528;&#x6848;&#x4F8B;&#x5B98;&#x65B9;&#x57FA;&#x672C;&#x90FD;&#x6709;&#x4ECB;&#x7ECD; <a href="https://ember-cli.com/&#xFF0C;&#x5728;&#x6B21;&#x53EA;&#x4ECB;&#x7ECD;&#x4E00;&#x4E9B;&#x7279;&#x6B8A;&#x573A;&#x666F;&#x4E0B;&#x9700;&#x8981;&#x7684;&#x6CE8;&#x610F;&#x4E8B;&#x9879;&#x3002;" target="_blank">https://ember-cli.com/&#xFF0C;&#x5728;&#x6B21;&#x53EA;&#x4ECB;&#x7ECD;&#x4E00;&#x4E9B;&#x7279;&#x6B8A;&#x573A;&#x666F;&#x4E0B;&#x9700;&#x8981;&#x7684;&#x6CE8;&#x610F;&#x4E8B;&#x9879;&#x3002;</a></p>
+<h2 id="&#x5B89;&#x88C5;-ember-cli">&#x5B89;&#x88C5; ember-cli</h2>
+<pre><code class="lang-bash">npm install -g ember-cli
+</code></pre>
+<p>ember-cli &#x7684;&#x7248;&#x672C;&#x662F;&#x968F;&#x7740; ember &#x7684;&#x7248;&#x672C;&#x53D8;&#x66F4;&#x800C;&#x53D8;&#x66F4;&#x7684;&#xFF0C;&#x7248;&#x672C;&#x53F7;&#x51E0;&#x4E4E;&#x4E00;&#x6837;</p>
+<p><strong>&#x521D;&#x59CB;&#x5316;&#x4E00;&#x4E2A;&#x9879;&#x76EE;</strong></p>
+<pre><code class="lang-bash">ember new ember-app
+</code></pre>
+<h2 id="&#x4F7F;&#x7528;-app-import-copy&#x3001;concat-&#x7B2C;&#x4E09;&#x65B9;&#x4F9D;&#x8D56;">&#x4F7F;&#x7528; app-import copy&#x3001;concat &#x7B2C;&#x4E09;&#x65B9;&#x4F9D;&#x8D56;</h2>
+<p>&#x6587;&#x6863; <a href="https://ember-cli.com/user-guide/#using-appimport" target="_blank">https://ember-cli.com/user-guide/#using-appimport</a> &#x63CF;&#x8FF0;&#x4E86;&#x5982;&#x4F55;&#x4F7F;&#x7528; <code>app.import</code> copy&#x3001;concat &#x7B2C;&#x4E09;&#x65B9;&#x4F9D;&#x8D56;&#x3002;&#x5728; ember-cli &#x4E2D;&#xFF0C;ember app &#x5DE5;&#x7A0B;&#x7684;&#x7B2C;&#x4E09;&#x65B9;&#x914D;&#x7F6E;&#x4F7F;&#x7528;&#x662F;&#x5728; ember-cli-build.js &#x4E2D;&#x914D;&#x7F6E;&#x5B8C;&#x6210;&#x3002;&#x5982;&#x679C; ember-app &#x662F;&#x4E00;&#x4E2A; ember-addon &#x5DE5;&#x7A0B;&#xFF0C;&#x7B2C;&#x4E09;&#x65B9;&#x4F9D;&#x8D56;&#x5728; index.js &#x4E2D;&#x914D;&#x7F6E;&#x4F7F;&#x7528;</p>
+<p><strong>&#x5F15;&#x5165;&#x7B2C;&#x4E09;&#x65B9; Non-AMD &#x4F9D;&#x8D56;</strong></p>
+<pre><code class="lang-javascript">app.import(<span class="hljs-string">&apos;bower_components/moment/moment.js&apos;</span>);
+</code></pre>
+<p>&#x58F0;&#x660E;&#x4E3A;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x4F7F;&#x7528;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> Ember <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;ember&apos;</span>;
+<span class="hljs-comment">/* global moment */</span>
+<span class="hljs-comment">// No import for moment, it&apos;s a global called `moment`</span>
+
+<span class="hljs-comment">// ...</span>
+<span class="hljs-keyword">var</span> day = moment(<span class="hljs-string">&apos;Dec 25, 1995&apos;</span>);
+</code></pre>
+<h2 id="ember-app-&#x51E0;&#x4E2A;&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x8BF4;&#x660E;">ember app &#x51E0;&#x4E2A;&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x8BF4;&#x660E;</h2>
+<ul>
+<li>vendor &#x7B2C;&#x4E09;&#x65B9; JavaScript </li>
+<li>public &#x56FE;&#x7247;&#x7B49;&#x6587;&#x4EF6;&#xFF0C;&#x5982;&#x679C;&#x9700;</li>
+<li>app/styles  css or less &#x7B49;&#x6587;&#x4EF6; </li>
+</ul>
+<h2 id="asset-compilation">Asset compilation</h2>
+<p><code>public/assets</code> &#x653E;&#x7F6E;&#x9700;&#x8981;&#x7684; font &#x3001;image &#x7B49;&#x6587;&#x4EF6;&#xFF0C;&#x6BD4;&#x5982;&#x5728; <code>public/assets/images</code> &#x76EE;&#x5F55;&#x4E0B;&#x5C31;&#x53EF;&#x4EE5;&#x5728; css &#x4E2D; <code>url(&apos;/assets/images/logo.png&apos;)</code> &#x8FD9;&#x4E48;&#x5F15;&#x7528;</p>
+<h2 id="&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x751F;&#x6210;&#x6620;&#x5C04;">&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x751F;&#x6210;&#x6620;&#x5C04;</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Assets</th>
+<th style="text-align:left">Output File</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>app/index.html</code></td>
+<td style="text-align:left"><code>index.html</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>app/**/*.js</code></td>
+<td style="text-align:left"><code>/assets/application-name.js</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>app/styles/app.css</code></td>
+<td style="text-align:left"><code>/assets/application-name.css</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>app/styles/**/*.css</code></td>
+<td style="text-align:left"><code>/assets/application-name.css</code></td>
+</tr>
+<tr>
+<td style="text-align:left">JavaScript files you import with <code>app.import</code></td>
+<td style="text-align:left"><code>/assets/vendor.js</code></td>
+</tr>
+<tr>
+<td style="text-align:left">CSS files you import with <code>app.import</code></td>
+<td style="text-align:left"><code>/assets/vendor.css</code></td>
+</tr>
+</tbody>
+</table>
+<footer class="page-footer"><span class="copyright">&#xA9; &#x4E09;&#x6708;&#x6C99; all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Updated at
+2022-01-22 10:25:17
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../controller/controller.html" class="navigation navigation-prev " aria-label="Previous page: 控制器">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../action.html" class="navigation navigation-next " aria-label="Next page: event 和 action">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Ember-cli","level":"1.8","depth":1,"next":{"title":"event 和 action","level":"1.9","depth":1,"path":"book/action.md","ref":"book/action.md","articles":[]},"previous":{"title":"控制器","level":"1.7","depth":1,"path":"book/controller/controller.md","ref":"book/controller/controller.md","articles":[]},"dir":"ltr"},"config":{"plugins":["mermaid","github","editlink","page-toc","-lunr","-search","search-plus","tbfed-pagefooter","ga"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&copy 三月沙","modify_label":"Updated at","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/wecatch/emberjs-guide"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/wecatch/emberjs-guide/blob/master"},"mermaid":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3","showByDefault":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-79591400-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"三月沙","pdf":{"pageNumbers":true,"fontSize":11,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"toc":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Emberjs Guide","language":"zh-cn","gitbook":">= 3.2.2"},"file":{"path":"book/cli/index.md","mtime":"2022-01-22T02:25:17.104Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-27T06:53:36.400Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-editlink/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-page-toc/anchor-3.1.1.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-page-toc/page-toc.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

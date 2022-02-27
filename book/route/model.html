@@ -1,0 +1,796 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-cn" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title> model hook · Emberjs Guide</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="三月沙">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-toc/page-toc.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="query-params.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="輸入並搜尋" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../why-emberjs.html">
+            
+                <a href="../why-emberjs.html">
+            
+                    
+                    为什么是 emberjs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    introduction
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../create-app.html">
+            
+                <a href="../create-app.html">
+            
+                    
+                    构建第一个 ember 应用程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../app-dir-structure.html">
+            
+                <a href="../app-dir-structure.html">
+            
+                    
+                    ember app 目录结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../component/">
+            
+                <a href="../component/">
+            
+                    
+                    认识 Component
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../component/template-is-html.html">
+            
+                <a href="../component/template-is-html.html">
+            
+                    
+                    认识 Template
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../component/introduce-component.html">
+            
+                <a href="../component/introduce-component.html">
+            
+                    
+                    引入 Component 重构 HTML
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../component/component-arguments-html-attributes.html">
+            
+                <a href="../component/component-arguments-html-attributes.html">
+            
+                    
+                    Component 的参数和 HTML 属性 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../component/component-state-and-action.html">
+            
+                <a href="../component/component-state-and-action.html">
+            
+                    
+                    Component 的状态和事件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../component/component-condition-and-loop.html">
+            
+                <a href="../component/component-condition-and-loop.html">
+            
+                    
+                    Component 实现逻辑判断和循环
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../component/custome-component.html">
+            
+                <a href="../component/custome-component.html">
+            
+                    
+                    更灵活的控制 Component 的渲染：Block content
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../component/component-life-circle.html">
+            
+                <a href="../component/component-life-circle.html">
+            
+                    
+                    Component 的生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../component/action.html">
+            
+                <a href="../component/action.html">
+            
+                    
+                    Component 的事件处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../component/QA.html">
+            
+                <a href="../component/QA.html">
+            
+                    
+                    QA
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    路由
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.5.1" data-path="model.html">
+            
+                <a href="model.html">
+            
+                    
+                     model hook
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="query-params.html">
+            
+                <a href="query-params.html">
+            
+                    
+                    query parameter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="route-loading-error.html">
+            
+                <a href="route-loading-error.html">
+            
+                    
+                    loading 和 error
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="404.html">
+            
+                <a href="404.html">
+            
+                    
+                    404 的实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="redirect.html">
+            
+                <a href="redirect.html">
+            
+                    
+                    重定向
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="template.html">
+            
+                <a href="template.html">
+            
+                    
+                    模板渲染
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../template/">
+            
+                <a href="../template/">
+            
+                    
+                    模板
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../template/link-to.html">
+            
+                <a href="../template/link-to.html">
+            
+                    
+                    URL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../template/input.html">
+            
+                <a href="../template/input.html">
+            
+                    
+                    表单
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../template/helper-index.html">
+            
+                <a href="../template/helper-index.html">
+            
+                    
+                    内建 helper 一览表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../template/dev-helper.html">
+            
+                <a href="../template/dev-helper.html">
+            
+                    
+                    开发 helper
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../controller/controller.html">
+            
+                <a href="../controller/controller.html">
+            
+                    
+                    控制器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../cli/">
+            
+                <a href="../cli/">
+            
+                    
+                    Ember-cli
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../action.html">
+            
+                <a href="../action.html">
+            
+                    
+                    event 和 action
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../QA.html">
+            
+                <a href="../QA.html">
+            
+                    
+                    QA
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本書使用 GitBook 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." > model hook</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="model">model</h1>
+<p>ember &#x7684; route &#x901A;&#x8FC7; model hook &#x6765;&#x5904;&#x7406;&#x6765;&#x81EA;&#x540E;&#x7AEF;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x6BD4;&#x5982; router &#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A; route</p>
+<pre><code class="lang-javascript">Router.map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">this</span>.route(<span class="hljs-string">&apos;favorite-posts&apos;</span>);
+});
+</code></pre>
+<p>&#x5728; route &#x7684; handler &#x4E2D;&#x4F7F;&#x7528; model &#x8FD9;&#x4E2A; hook &#x6765;&#x63D0;&#x4F9B;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x6E32;&#x67D3;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">//app/routes/favorite-posts.js</span>
+<span class="hljs-keyword">import</span> Route <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@ember/routing/route&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Route.extend({
+  model() {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.store.query(<span class="hljs-string">&apos;post&apos;</span>, { favorite: <span class="hljs-literal">true</span> });
+  }
+});
+</code></pre>
+<p>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B; route &#x901A;&#x8FC7;&#x5728; model &#x4E2D;&#x8FD4;&#x56DE; promise &#x6216;&#x8005;&#x666E;&#x901A;&#x7684; JavaScript &#x5BF9;&#x8C61;&#x6765;&#x63D0;&#x4F9B;&#x6570;&#x636E;&#xFF0C;&#x5982;&#x679C;&#x662F; promise&#xFF0C;route &#x4F1A;&#x7B49;&#x5F85; promise &#x89E3;&#x6790;&#x5B8C;&#x6210;&#x624D;&#x53BB;&#x6E32;&#x67D3; template&#x3002;</p>
+<p>Route &#x4F1A;&#x628A; model &#x8FD4;&#x56DE;&#x7684; value &#x6302;&#x5728; controller &#x7684; model &#x5C5E;&#x6027;&#x4E0A;&#xFF0C;&#x7136;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x5728; template &#x4E2D;&#x5F15;&#x7528;&#x6765;&#x81EA; controller &#x7684; model &#x4E86;&#xFF1A;</p>
+<pre><code class="lang-handlebars"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Favorite Posts<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+</span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">each</span></span> model as |post|}}</span><span class="xml">
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><span class="hljs-template-variable">{{post.body}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">each</span></span>}}</span><span class="xml">
+</span></code></pre>
+<p>&#x9664;&#x4E86; model &#x8FD9;&#x4E2A; hook &#xFF0C;route &#x8FD8;&#x63D0;&#x4F9B;&#x4E86;</p>
+<ul>
+<li>beforeModel</li>
+<li>afterModel</li>
+</ul>
+<p>&#x8FD9;&#x4E24;&#x4E2A; hook &#x6765;&#x5B8C;&#x6210;&#x5728; model &#x89E3;&#x6790;&#x524D;&#x548C;&#x89E3;&#x6790;&#x540E;&#x7684;&#x5DE5;&#x4F5C;&#x3002;</p>
+<h2 id="beforemodel-hook">beforeModel hook</h2>
+<p>&#x53D1;&#x751F;&#x5728; model hook &#x8C03;&#x7528;&#x4E4B;&#x524D;&#x7684; hook:</p>
+<pre><code class="lang-javascript">beforeModel(transition){
+  <span class="hljs-keyword">return</span> Any | <span class="hljs-built_in">Promise</span>
+}
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x4E2A; hook &#x4E2D;&#x8C03;&#x7528; transition &#x7684; abort &#x6216;&#x8005; retry &#x5B8C;&#x6210;&#x5BF9; route &#x7684;&#x7279;&#x5B9A;&#x5904;&#x7406;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>this.transitionTo</code> &#x5B8C;&#x6210;&#x8DF3;&#x8F6C;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x8FD9;&#x4E2A;hook &#x8FD4;&#x56DE; promise&#xFF0C;route &#x4F1A;&#x7B49;&#x5F85; promise &#x89E3;&#x6790;&#x5B8C;&#x6210;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x4E2A; hook &#x5B8C;&#x6210;&#x4E00;&#x4E9B;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x3002;</p>
+<h2 id="aftermodel-hook">afterModel hook</h2>
+<p>&#x53D1;&#x751F;&#x5728; model hook &#x8C03;&#x7528;&#x4E4B;&#x540E;&#x7684; hook:</p>
+<pre><code class="lang-javascript">afterModel(model, transition){
+  <span class="hljs-keyword">return</span> Any | <span class="hljs-built_in">Promise</span>
+}
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x4E2A; hook &#x4E2D;&#x6839;&#x636E; model &#x7684;&#x5185;&#x5BB9;&#x6267;&#x884C;&#x5BF9;&#x5E94;&#x7684;&#x903B;&#x8F91;&#x5224;&#x65AD;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x505A;&#x8DF3;&#x8F6C;&#x5904;&#x7406;&#xFF0C;&#x5982;&#x679C;&#x8FD9;&#x4E2A; hook &#x8FD4;&#x56DE; promise route &#x4F1A;&#x7B49;&#x5F85;&#x76F4;&#x5230; promise &#x89E3;&#x6790;&#x5B8C;&#x6210;&#x3002;</p>
+<h2 id="dynamic-model">dynamic model</h2>
+<p>&#x9664;&#x4E86;&#x901A;&#x8FC7; model hook &#x8FD4;&#x56DE;&#x56FA;&#x5B9A;&#x7684; model&#xFF0C;route &#x8FD8;&#x652F;&#x6301;&#x901A;&#x8FC7; URL &#x6765;&#x533A;&#x5206;&#x4E0D;&#x540C;&#x7684; model&#xFF0C;&#x79F0;&#x4E4B;&#x4E3A; dynamic model&#xFF0C;&#x7528;&#x4EE5;&#x533A;&#x5206;&#x4E0D;&#x540C;&#x7684; model &#x7684; URL &#x4E2D;&#x7684;&#x53C2;&#x6570;&#x79F0;&#x4E4B;&#x4E3A; dynamic segment&#x3002;&#x6BD4;&#x5982;&#x6709;&#x4E00;&#x4E2A;&#x5217;&#x8868;&#x662F; <code>/photos</code>  &#x663E;&#x793A;&#x56FE;&#x7247;&#x5217;&#x8868;&#xFF0C;&#x5F53;&#x7528;&#x6237;&#x70B9;&#x51FB;&#x5355;&#x4E2A;&#x56FE;&#x7247;&#x7684;&#x65F6;&#x5019;&#x6BD4;&#x5982;&#x8BF4;  <code>/photos/1</code> &#x4F1A;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684; model &#x6E32;&#x67D3;&#x4E0D;&#x540C;&#x7684; template&#x3002;</p>
+<p>&#x66F4;&#x591A;&#x53C2;&#x89C1; <a href="./">Route</a></p>
+<h2 id="model-hook-&#x8C03;&#x7528;&#x7684;&#x65F6;&#x673A;">model hook &#x8C03;&#x7528;&#x7684;&#x65F6;&#x673A;</h2>
+<p>&#x4E00;&#x4E2A;&#x5E26; dynamic segment &#x7684; url &#x5982;&#x679C;&#x603B;&#x662F;&#x901A;&#x8FC7;&#x6D4F;&#x89C8;&#x5668;&#x7684; url &#x8FDB;&#x5165;&#xFF0C;&#x90A3;&#x4E48; route &#x7684; model hook &#x603B;&#x662F;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x3002;
+&#x5982;&#x679C;&#x4E00;&#x4E2A; route &#x662F;&#x901A;&#x8FC7; transition &#x8FDB;&#x5165;&#xFF0C;&#x6BD4;&#x5982; link-to &#x7EC4;&#x4EF6;&#xFF0C;&#x800C;&#x4E14;&#x8FD8;&#x63D0;&#x4F9B;&#x4E86; model &#x4E0A;&#x4E0B;&#x6587;&#xFF0C;&#x6BD4;&#x5982; link-to &#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x4E00;&#x4E2A; object&#xFF0C;&#x8FD9;&#x8868;&#x793A; model &#x9700;&#x8981;&#x6570;&#x636E;&#x5176;&#x5B9E;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x4E86;&#xFF0C;&#x8FD9;&#x662F; hook &#x90FD;&#x4E0D;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x3002;&#x5982;&#x679C;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x4E00;&#x4E2A;&#x6807;&#x8BC6;&#x7B26;&#xFF0C;&#x6BD4;&#x5982; id &#x6216;&#x5176;&#x4ED6;&#xFF0C;&#x90A3;&#x4E48; model hook &#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x3002;</p>
+<pre><code class="lang-handlebars"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Photos<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+</span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">each</span></span> model as |photo|}}</span><span class="xml">
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+    </span><span class="hljs-template-tag">{{#<span class="hljs-name">link-to</span> <span class="hljs-string">&quot;photo&quot;</span> photo}}</span><span class="xml">
+      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{photo.thumbnailUrl}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{photo.title}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> /&gt;</span>
+    </span><span class="hljs-template-tag">{{/<span class="hljs-name">link-to</span>}}</span><span class="xml">
+  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">each</span></span>}}</span><span class="xml">
+</span></code></pre>
+<p>&#x4E0A;&#x9762;&#x4F20;&#x7ED9; link-to &#x7684;&#x662F; model&#xFF0C;hook &#x4E0D;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x3002;</p>
+<pre><code class="lang-handlebars"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Photos<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+</span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">each</span></span> model as |photo|}}</span><span class="xml">
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+    </span><span class="hljs-template-tag">{{#<span class="hljs-name">link-to</span> <span class="hljs-string">&quot;photo&quot;</span> photo.id}}</span><span class="xml">
+      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{photo.thumbnailUrl}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">{{photo.title}}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> /&gt;</span>
+    </span><span class="hljs-template-tag">{{/<span class="hljs-name">link-to</span>}}</span><span class="xml">
+  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+</span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">each</span></span>}}</span><span class="xml">
+</span></code></pre>
+<p>&#x4E0A;&#x9762;&#x4F20;&#x7ED9; link-to &#x7684;&#x662F; id&#xFF0C;hook &#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x3002;</p>
+<p><strong>&#x4E0D;&#x5E26; dynamic segment &#x7684; route &#x4E0D;&#x8BBA;&#x4F20;&#x9012;&#x4EC0;&#x4E48;&#x53C2;&#x6570;&#x603B;&#x662F;&#x4F1A;&#x88AB;&#x8C03;&#x7528;</strong></p>
+<h2 id="&#x591A;&#x4E2A;-model">&#x591A;&#x4E2A; model</h2>
+<p>Model hook &#x652F;&#x6301;&#x8FD4;&#x56DE;&#x591A;&#x4E2A; model &#xFF0C;&#x8FD9;&#x662F;&#x901A;&#x8FC7; <a href="https://www.emberjs.com/api/ember/release/classes/rsvp/methods/hash?anchor=hash" target="_blank">RSVP.hash</a> &#x5B8C;&#x6210;&#x7684;&#xFF0C;hash &#x628A;&#x591A;&#x4E2A; promise &#x7684; value &#x91CD;&#x65B0;&#x7EC4;&#x7EC7;&#x6210;&#x4E00;&#x4E2A; promise &#x5E76;&#x8FD4;&#x56DE;&#xFF0C;&#x65B0;&#x7684; promise &#x7684; value &#x5C31;&#x662F;&#x591A;&#x4E2A; promise &#x7684; value &#x7EC4;&#x6210;&#x7684; object&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">//app/routes/songs.js</span>
+
+<span class="hljs-keyword">import</span> Route <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@ember/routing/route&apos;</span>;
+<span class="hljs-keyword">import</span> RSVP <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;rsvp&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Route.extend({
+  model() {
+    <span class="hljs-keyword">return</span> RSVP.hash({
+      songs: <span class="hljs-keyword">this</span>.store.findAll(<span class="hljs-string">&apos;song&apos;</span>),
+      albums: <span class="hljs-keyword">this</span>.store.findAll(<span class="hljs-string">&apos;album&apos;</span>)
+    });
+  }
+});
+</code></pre>
+<p>&#x5728; template &#x4E2D;&#x6E32;&#x67D3;&#xFF1A;</p>
+<pre><code class="lang-handlebars"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Playlist<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+  </span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">each</span></span> model.songs as |song|}}</span><span class="xml">
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span></span><span class="hljs-template-variable">{{song.name}}</span><span class="xml"> by </span><span class="hljs-template-variable">{{song.artist}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  </span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">each</span></span>}}</span><span class="xml">
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Albums<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+  </span><span class="hljs-template-tag">{{#<span class="hljs-name"><span class="hljs-builtin-name">each</span></span> model.albums as |album|}}</span><span class="xml">
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span></span><span class="hljs-template-variable">{{album.title}}</span><span class="xml"> by </span><span class="hljs-template-variable">{{album.artist}}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+  </span><span class="hljs-template-tag">{{/<span class="hljs-name"><span class="hljs-builtin-name">each</span></span>}}</span><span class="xml">
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</span></code></pre>
+<h2 id="&#x91CD;&#x7528;-route-&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#xFF0C;&#x83B7;&#x53D6;-parent-route-&#x7684;&#x4FE1;&#x606F;">&#x91CD;&#x7528; route &#x7684;&#x4E0A;&#x4E0B;&#x6587;&#xFF0C;&#x83B7;&#x53D6; parent route &#x7684;&#x4FE1;&#x606F;</h2>
+<p>&#x6709;&#x4E9B;&#x573A;&#x666F;&#x4E4B;&#x4E0B;&#xFF0C;&#x9700;&#x8981;&#x4ECE;&#x5F53;&#x524D; route &#x4E2D;&#x83B7;&#x53D6; parent route &#x7684;&#x4E00;&#x4E9B;&#x4FE1;&#x606F;&#xFF0C;&#x5728; Ember &#x4E2D;&#x662F;&#x901A;&#x8FC7; <code>paramsFor</code> &#x5B8C;&#x6210;&#x7684;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">//app/routes/album/index.js</span>
+<span class="hljs-keyword">import</span> Route <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@ember/routing/route&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Route.extend({
+  model() {
+    <span class="hljs-keyword">let</span> { album_id } = <span class="hljs-keyword">this</span>.paramsFor(<span class="hljs-string">&apos;album&apos;</span>);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.store.query(<span class="hljs-string">&apos;song&apos;</span>, { album: album_id });
+  }
+});
+</code></pre>
+<p>&#x9664;&#x4E86;&#x83B7;&#x53D6; parent route &#x7684;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#xFF0C;<code>paramsFor</code> &#x8FD8;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5728;&#x5F53;&#x524D; route &#x7684; action &#x6216; method &#x4E2D;&#x83B7;&#x53D6;&#x5F53;&#x524D; route &#x7684;&#x53C2;&#x6570;&#xFF0C;&#x7528;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">this</span>.paramsFor(<span class="hljs-keyword">this</span>.routeName)
+</code></pre>
+<p>&#x5728;&#x5F88;&#x591A;&#x573A;&#x5408;&#xFF0C;&#x53EF;&#x80FD; parent route &#x7684; model &#x66F4;&#x6709;&#x7528;&#xFF0C;&#x7528; <code>modelFor</code> &#x53EF;&#x4EE5;&#x5B8C;&#x6210;&#x8FD9;&#x4E2A;&#x5DE5;&#x4F5C;:</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">//app/routes/album/index.js</span>
+<span class="hljs-keyword">import</span> Route <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@ember/routing/route&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Route.extend({
+  model() {
+    <span class="hljs-keyword">let</span> { songs } = <span class="hljs-keyword">this</span>.modelFor(<span class="hljs-string">&apos;album&apos;</span>);
+    <span class="hljs-keyword">return</span> songs;
+  }
+});
+</code></pre>
+<footer class="page-footer"><span class="copyright">&#xA9; &#x4E09;&#x6708;&#x6C99; all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">Updated at
+2022-01-22 10:25:17
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 路由">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="query-params.html" class="navigation navigation-next " aria-label="Next page: query parameter">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":" model hook","level":"1.5.1","depth":2,"next":{"title":"query parameter","level":"1.5.2","depth":2,"path":"book/route/query-params.md","ref":"book/route/query-params.md","articles":[]},"previous":{"title":"路由","level":"1.5","depth":1,"path":"book/route/index.md","ref":"book/route/index.md","articles":[{"title":" model hook","level":"1.5.1","depth":2,"path":"book/route/model.md","ref":"book/route/model.md","articles":[]},{"title":"query parameter","level":"1.5.2","depth":2,"path":"book/route/query-params.md","ref":"book/route/query-params.md","articles":[]},{"title":"loading 和 error","level":"1.5.3","depth":2,"path":"book/route/route-loading-error.md","ref":"book/route/route-loading-error.md","articles":[]},{"title":"404 的实现","level":"1.5.4","depth":2,"path":"book/route/404.md","ref":"book/route/404.md","articles":[]},{"title":"重定向","level":"1.5.5","depth":2,"path":"book/route/redirect.md","ref":"book/route/redirect.md","articles":[]},{"title":"模板渲染","level":"1.5.6","depth":2,"path":"book/route/template.md","ref":"book/route/template.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["mermaid","github","editlink","page-toc","-lunr","-search","search-plus","tbfed-pagefooter","ga"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"&copy 三月沙","modify_label":"Updated at","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/wecatch/emberjs-guide"},"editlink":{"label":"编辑本页","multilingual":false,"base":"https://github.com/wecatch/emberjs-guide/blob/master"},"mermaid":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3","showByDefault":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"ga":{"configuration":"auto","token":"UA-79591400-1"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"search-plus":{}},"theme":"default","author":"三月沙","pdf":{"pageNumbers":true,"fontSize":11,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"toc":true},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Emberjs Guide","language":"zh-cn","gitbook":">= 3.2.2"},"file":{"path":"book/route/model.md","mtime":"2022-01-22T02:25:17.120Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-27T06:53:36.400Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-editlink/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-page-toc/anchor-3.1.1.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-page-toc/page-toc.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
