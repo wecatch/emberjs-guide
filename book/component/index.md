@@ -1,6 +1,6 @@
 # 认识 Component 
 
-Component 是 emberjs 中的重要概念，emberjs 的 Component 和 vuejs 以及 reactjs 等 ui-Component 概念大同小异，并无本质的差别，都是具有独立逻辑且可复用的 UI 单元。
+Component 是 emberjs 中的重要概念，emberjs 的 Component 和 vuejs 以及 reactjs 等 ui-component 概念大同小异，并无本质差别，都是具有独立逻辑且可复用的 UI 单元。
 
 ## 定义 Component 
 
@@ -35,20 +35,18 @@ app/components
 
 文件的内容是：
 
-```handlebars
+```html
 {{yield}}
 ```
 
 我们将其中的内容分别改为：
 
-hello.hbs
-
+`hello.hbs`
 ```html
 <h3>Hello</h3>
 ```
 
-world.hbs
-
+`world.hbs`
 ```html
 <h3>world</h3>
 ```

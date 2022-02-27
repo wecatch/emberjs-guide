@@ -1,6 +1,6 @@
 # Component 实现逻辑判断和循环
 
-在 template 中，可以使用 `if` 进行条件判断，ember 提供的条件判断包括两种形式：block 和 inline
+在 template 中，可以使用 `if` 进行条件判断，ember 提供的条件判断包括两种形式：block（块状） 和 inline（内联）：
 
 ```html
 {{#if this.thingIsTrue}}
@@ -15,7 +15,7 @@
 
 ## Block if
 
-Block 条件判断正如字面意思提供的是基于块状的逻辑判断，类似 html 中的 block 元素:
+Block 条件判断正如字面意思提供的是基于块状的逻辑判断，类似 HTML 中的 block 元素:
 
 ```html
 {{#if condition}}
@@ -62,7 +62,7 @@ Inline 条件判断可以在一个表达式中完成逻辑判断:
 
 ```
 
-Inline 的方式经常用于对 html class 的判断中，比如根据用户是否登陆而赋予不同的 class:
+Inline 的方式经常用于对 HTML class 的判断中，比如根据用户是否登陆而赋予不同的 class:
 
 ```html
 <aside ...attributes>
@@ -79,7 +79,7 @@ Inline 的方式经常用于对 html class 的判断中，比如根据用户是�
 ## Template 中的循环
 
 循环使用 `each` 完成，`each` 和 `if` 一样，在 ember 中都称之为 `helper`，是 ember 支持的在 template 中实现 JavaScript 逻辑的一种能力
-
+：
 ```html
   {{#each this.messages as |message|}}
     <Message

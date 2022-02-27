@@ -1,6 +1,6 @@
 # 介绍
 
-Emberjs 是一个 JavaScript 框架，可以用来构建非常复杂的 web 应用，emberjs 的设计理念是**约定大于配置**，本身具有固定的开发模式以及完备的开发工具，一旦掌握，生成效率奇高。
+Emberjs 是一个 JavaScript 框架，可以用来构建非常复杂的 web 应用，emberjs 的设计理念是**约定大于配置**，本身具有固定的开发模式以及完备的开发工具，一旦掌握，生产效率将成倍提升。
 
 ## 基础概念和架构
 
@@ -19,15 +19,15 @@ Emberjs 是一个 JavaScript 框架，可以用来构建非常复杂的 web 应�
 
 ### Router
 
-router 负责组织 route，并处理 route 之间的层级关系，route 的 manager。
+Router 负责组织 route，并处理 route 之间的层级关系，是 route 的 manager。
 
 ### Route
 
-route 就是 web 的路由，优秀的 web 应用总是从良好的路由设计开始的。
+Route 就是 web 的路由，优秀的 web 应用总是从良好的路由设计开始的。
 
 ### Model
 
-emebr 中的数据对象，可以是任意的 JavaScript 对象、数组或 promise，ember 提供了 ember-data 来处理所有与数据相关的事情。
+Emebr 中的数据对象，可以是任意的 JavaScript 对象、数组或 promise，ember 提供了 ember-data 来处理所有与数据相关的事情。
 
 ### Service
 

@@ -1,6 +1,6 @@
 # Component 的状态和交互
 
-Component 的 template 决定 UI 的静态模型，Component 的 JavaScript 可以为 UI 提供交互式操作(event)和数据(state)，联结二者的是 action，**可以在 template 中使用的 JavaScript 方法**， 形如：
+Component 的 template 决定 UI 的静态模型，Component 的 JavaScript 可以为 UI 提供交互式操作(Event)和数据(State)，联结二者的是 action：**可以在 template 中使用的 JavaScript 方法**， 形如：
 
 ```html
 <button type="button" {{on "click" this.increment}}>+1</button>
@@ -9,7 +9,7 @@ Component 的 template 决定 UI 的静态模型，Component 的 JavaScript 可�
 ## Component 的状态
 
 
-状态就是 component 的属性，这些属性会随着 component 的变化而变化，有些属性会以 UI 的形式呈现给用户，也就是当属性发生变化时，UI 应该及时反映出来，这种通过跟踪属性改变 UI 状态的能力在 ember 中叫 `autotrack` ，实现 autotrack 能力的属性叫 `tracked propertiy`。
+状态就是 component 的属性，这些属性会随着 component 的变化而变化，有些属性会以 UI 的形式呈现给用户，也就是当属性发生变化时，UI 会及时变化反馈出阿里，这种通过跟踪属性状态改变 UI 的能力在 ember 中叫 `autotrack` ，实现 autotrack 能力的属性叫 `tracked propertiy`。
 
 `app/components/counter.js` 
 ```javascript
@@ -23,7 +23,7 @@ export default class CounterComponent extends Component {
 
 ```
 
-上述例子中的 `count` 中具有了 autotrack 的能力，当 autotrack 值发生改变时，对应 template 中的值也会发生变化，比如 count 的值发生改变时，template 中的值也会发生改变
+上述例子中的 `count` 中具有了 autotrack 的能力，当 autotrack 值发生改变时，对应 template 中的值也会发生变化，比如 count 的值发生改变时，template 中的值也会发生改变：
 
 `app/components/counter.hbs` 
 
@@ -36,7 +36,7 @@ export default class CounterComponent extends Component {
 
 ```
 
-**ember 通过 this 来区分属性时来自 component argument 还是 component 自身，属于 component 自身的属性通过 this 来获取**
+**Ember 通过 this 来区分属性是来自 component argument 还是 component 自身，属于 component 自身的属性通过 this 来获取。**
 
 
 ## 改变 Component 的状态
@@ -86,7 +86,7 @@ export default class CounterComponent extends Component {
 ## 为 action 提供参数
 
 
-有时候直接使用 action 并不能满足需要，还需要为 action 提供参数来实现更复杂的交互能力，ember 使用 `fn` modifier 来实现对 action 传递参数
+有时候直接使用 `action` 并不能满足需要，还需要为 action 提供参数来实现更复杂的交互能力，ember 使用 `fn` modifier 来实现对 action 传递参数：
 
 `app/components/counter.js` 
 ```javascript
@@ -117,13 +117,13 @@ export default class CounterComponent extends Component {
 
 ```
 
-**fn 的含义就是把参数和 action 重新再包装成一个函数来使用**
+**fn 的含义就是把参数和 action 重新再包装成一个函数来使用。**
 
 
 ## 计算属性
 
 
-Computed value 是 ember 提供的一种以声明式编程的方式动态计算属性的能力，通过这种能力，如果某个 state 的改变要依赖其他 state，只要被依赖的 state 具有 autotrack 能力，那么该 state 也会在被依赖的 state 发生变化时而发生变化，下面的例子中，total 这个属性依赖 count 和 multiple，通过 get 来实现根据 count 和 multiple 的依赖计算 total
+Computed value 是 ember 提供的一种以声明式编程的方式动态计算属性的能力，通过这种能力，如果某个 state 的改变要依赖其他 state，只要被依赖的 state 具有 autotrack 能力，那么该 state 也会在被依赖的 state 发生变化时而改变，下面的例子中，total 这个属性依赖 count 和 multiple，通过 get 来实现根据 count 和 multiple 的依赖计算 total
 
 `app/components/counter.js` 
 

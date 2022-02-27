@@ -1,6 +1,6 @@
 # 更灵活的控制 Component 的渲染：Block content
 
-如果想自定义 component 的模板，可以使用 `block form`，即在模板中使用 `{{yield}}` 表达式, yield 的含义是在 tempalte 中提供一个 placeholder 让用户可以自定义 template 的内容
+如果想自定义 component 的模板，可以使用 `block form`，即在模板中使用 `{{yield}}` 表达式, yield 的含义是在 tempalte 中提供一个 placeholder 让用户可以自定义 template 的内容：
 
 `app/components/message.hbs`
 ```html
@@ -41,17 +41,17 @@
 
 
 其中received-message.hbs 部分:
-```
+```html
 <p>
     Hey Zoey, have you had a chance to look at the EmberConf
     brainstorming doc I sent you?
   </p>
 ```
-将会替代 message yield 出现的地方。这个例子中 message 提供了用户自定义 message 内容主体的能力
+将会替代 `message.hbs` yield 出现的地方，这个例子中 message 提供了用户自定义 message 内容主体的能力。
 
 ##  条件 Block content
 
-`has-block` 可以用来判断 component 是否有 block
+`has-block` 可以用来判断 component 是否有 block：
 
 ```html
 <dialog>
@@ -65,10 +65,10 @@
 如果有自定义内容就显示内容，否则显示默认的内容。
 
 
-## Block 参数
+## 把 component 传递到组件外部
 
 
-`yield` 除了可以作为占位符之外，还提供把 template 的内容主动传递到 component 外部使用的能力
+`yield` 除了可以作为占位符之外，还提供把 template 的内容主动传递到 component 外部使用的能力：
 
 ```
 
@@ -90,9 +90,9 @@
 ```
 
 
-传递多个参数
+传递多个参数：
 
-```
+```html
 
 {{yield @post.title @post.author @post.body }}
 
@@ -117,7 +117,7 @@
 
 `app/templates/components/blog-post.hbs`
 
-```handlebars
+```html
 {{#if hasBlock}}
   {{yield post.title}}
   {{yield post.body}}
