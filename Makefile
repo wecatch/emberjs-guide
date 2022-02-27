@@ -31,7 +31,7 @@ deploy:
 	make build
 	git checkout -b gh-pages
 	git rm SUMMARY.md README.md
-	git rm -rf book src book.json
+	git rm -rf book source book.json
 	cp -r _book/* .
 	rm -rf _book
 	git rm Makefile
